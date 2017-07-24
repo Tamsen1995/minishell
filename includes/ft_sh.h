@@ -26,7 +26,6 @@ typedef struct		s_state
 }					t_state;
 
 int					get_next_line(int const fd, char **line);
-
-
+int					sh_execute(char **args);
 
 #endif
