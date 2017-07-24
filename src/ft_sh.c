@@ -1,6 +1,5 @@
 #include "../includes/ft_sh.h"
 
-
 void print_twod_arr(char **args)
 {
     int i;
@@ -12,6 +11,7 @@ void print_twod_arr(char **args)
         i++;
     }
 }
+
 
 // the main loop of the program
 // intialize a prompt for the user
@@ -29,6 +29,8 @@ void sh_loop(void)
         ft_putstr("tamshell$> ");
         get_next_line(0, &line); // waiting for the input
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
+    //    status = sh_execute(args);
+    
     }
 }
 
