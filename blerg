@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[ADD] added the Makefile, and implemented the first couple of modules"
+git commit -m "[ADD] Implemented the prompt and a basic loop, acting as the main loop of the program. The loop splits the line given into arguments thus far, but only if they are delimited by spaces"
 git push origin master
