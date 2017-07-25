@@ -2,6 +2,8 @@
     "files.associations": {
         "cdefs.h": "c",
         "libft.h": "c",
-        "get_next_line.c": "cpp"
+        "get_next_line.c": "cpp",
+        "wait.h": "c",
+        "ft_sh.h": "c"
     }
 }

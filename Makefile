@@ -4,6 +4,8 @@ LIBFT = libft/libft.a
 NAME = ft_sh
 SRC = src/ft_sh.c \
 	src/get_next_line.c \
+	src/builtins.c \
+	src/sh_execute.c\
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 

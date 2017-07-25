@@ -25,7 +25,11 @@ typedef struct		s_state
 	char			**env;
 }					t_state;
 
+void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
 int					sh_execute(char **args);
+int					sh_launch(char **args);
+int					sh_cd(char **args);
+int					sh_exit(void);
 
 #endif

@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[ADD] starting to make a function that will either start a process or a builtin"
+git commit -m "[ADD] madee the function that will either start a process or a builtin, also implemented two builtins and a (to be revised) error/exit function"
 git push origin feature/execute
