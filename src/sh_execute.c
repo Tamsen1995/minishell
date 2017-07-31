@@ -65,23 +65,29 @@ T_BOOL check_builtins(char **args)
 int exec_builtin(char **args)
 {
     // Just output the command for now
-    ft_putendl(args[0]);
-
-
-    return (1); // TESTING
+    if (ft_strcmp(args[0], "echo") == 0) // WIP
+        return (sh_echo(args));
+    if (ft_strcmp(args[0], "cd") == 0) // DONE ?
+        return (sh_cd(args));
+    if (ft_strcmp(args[0], "setenv") == 0)
+        return (1);
+    if (ft_strcmp(args[0], "unsetenv") == 0)
+        return (1);
+    if (ft_strcmp(args[0], "env") == 0)
+        return (1);
+    if (ft_strcmp(args[0], "exit") == 0) // DONE
+        return (sh_exit());
+    fatal("Error in exec_builtin: builtin recognized, but flow not properly redirected");
+    return (0);
 }
 
 // function that will either start a process or a builtin
 int sh_execute(char **args)
-{
+{        
+    // There was an empty command
     if (args[0] == NULL)
-    {
-        // There was an empty command
         return (1); 
-    }
     if (check_builtins(args) == TRUE) 
-        return exec_builtin(args); // TESTING
-//    return sh_launch(args);
-
-    return (1); // TESTING
+        return exec_builtin(args); // WIP
+    return sh_launch(args);
 }

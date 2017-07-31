@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[ADD] made the function that will either start a process or a builtin, also implemented two builtins and a (to be revised) error/exit function. Next up is redirecting the flow to the appropiate builtins in exec_builtin"
+git commit -m "[UPD] the builtins are being redirected to their proper flows. Now I need to implement the different builtins. "
 git push origin builtins/flow

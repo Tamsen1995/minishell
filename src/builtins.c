@@ -29,3 +29,19 @@ int sh_echo(char **args)
     ft_putendl(args[1]);
     return (1);
 }
+
+void sh_setenv()
+{
+    // first I need to find the place where all the
+    // env variables are stored
+    
+    // Then I need to unset the variable of the name
+    // IF it even exists
+
+    // then allocate enough memory for the variable and its value
+    // "=" and "\0"
+
+    // and then set it with something similar to putenv
+
+
+}
