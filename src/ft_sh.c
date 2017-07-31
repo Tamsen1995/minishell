@@ -18,13 +18,68 @@ void sh_loop(void)
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
         status = sh_execute(args);
     }
+
+    // TODO free args
 }
 
-int main(void)
+// iterates to the end of the env list
+// and then adds the value to it
+t_env       *sh_putenv(char *name_value)
 {
-    // starting the program
-    sh_loop();
+    // TODO implement this
+
+    ft_putstr(name_value); // TESTING
+    return (NULL); // TESTING
+}
+
+// initiaing the shell and the data required for it
+t_shell     *init_shell()
+{
+    t_shell *shell;
+
+    shell = NULL;
+    if (!(shell = (t_shell *)malloc(sizeof(t_shell))))
+        fatal("Couldn't allocate shell in init_shell");
+    shell->env = sh_putenv("HOME=");
+
+    return (NULL); // TESTING
+}
+
+
+
+
+void			print_twod(char **envv)
+{
+	int i;
+
+	i = 0;
+	while (envv[i])
+	{
+		ft_putendl(envv[i]);
+		i++;
+	}
+}
+
+
+int main(int ac, char **av, char **envv)
+{
+    t_shell *shell;
+
+    shell = NULL;
+    ac = 0;
+    av = NULL;
+
+	print_twod(envv);// TESTING
+
+
+    shell = init_shell(); // Initiating the shell
+    sh_loop();  // the programs main loop
+    
+    
+    // TODO free shell
     return (0);
+
+
 }
 
 

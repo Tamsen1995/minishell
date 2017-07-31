@@ -26,6 +26,13 @@ typedef struct		s_env
 	char			*value;
 }					t_env;
 
+typedef struct		s_shell
+{
+	struct s_env	*env; // The environment variables
+	// Add more data variables later
+}					t_shell;
+
+
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
 int					sh_execute(char **args);
