@@ -20,7 +20,7 @@ int sh_launch(char **args)
     if (pid == 0)
     {
         // executing the sought after program
-        if (execvp(args[0], args) == -1)
+        if (execvp(args[0], args) == -1) // Change to execve later
             fatal("sh_launch ERR:001");
     }
     else if (pid < 0)
