@@ -31,5 +31,6 @@ int					sh_execute(char **args);
 int					sh_launch(char **args);
 int					sh_cd(char **args);
 int					sh_exit(void);
+int					sh_echo(char **args);
 
 #endif
