@@ -28,7 +28,7 @@ int sh_launch(char **args)
     else 
     {
         // this condition is meant for the parent process
-        // if waits for the status to end, either by exit
+        // it waits for the status to end, either by exit
         // or signal et cetera
         wpid = waitpid(pid, &status, WUNTRACED);
         while (!WIFEXITED(status) && !WIFSIGNALED(status))
@@ -37,11 +37,51 @@ int sh_launch(char **args)
     return (1);
 }
 
+
+
+// TODO implement all the builtins
+// simply checks the argument array for
+// a builtin command
+T_BOOL check_builtins(char **args)
+{
+    if (ft_strcmp(args[0], "echo") == 0)
+        return (TRUE);
+    if (ft_strcmp(args[0], "cd") == 0)
+        return (TRUE);
+    if (ft_strcmp(args[0], "setenv") == 0)
+        return (TRUE);
+    if (ft_strcmp(args[0], "unsetenv") == 0)
+        return (TRUE);
+    if (ft_strcmp(args[0], "env") == 0)
+        return (TRUE);
+    if (ft_strcmp(args[0], "exit") == 0)
+        return (TRUE);
+    return (FALSE);
+}
+
+// redirects the flow to the appropiate
+// builtin
+// returns whatever the builtin returns
+int exec_builtin(char **args)
+{
+    // Just output the command for now
+    ft_putendl(args[0]);
+
+
+    return (1); // TESTING
+}
+
 // function that will either start a process or a builtin
 int sh_execute(char **args)
 {
-    ft_putendl(args[0]); // HACKY / TESTING PURPOSES ONLY
+    if (args[0] == NULL)
+    {
+        // There was an empty command
+        return (1); 
+    }
+    if (check_builtins(args) == TRUE) 
+        return exec_builtin(args); // TESTING
+//    return sh_launch(args);
 
-    return (0);
-
+    return (1); // TESTING
 }

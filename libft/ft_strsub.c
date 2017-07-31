@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_sh.h"
+#include "../includes/libft.h"
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*fraiche;
 	size_t	i;
+	int		mem;
 
 	i = 0;
-	if (!(fraiche = (char *)malloc(sizeof(char) * len + 1)))
+	mem = len;
+	if (!(fraiche = (char *)malloc(sizeof(char) * mem + 1)))
 		return (NULL);
 	if (!(s))
 		return (NULL);

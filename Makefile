@@ -1,7 +1,7 @@
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -I includes
 LIBFT = libft/libft.a
-NAME = ft_sh
+NAME = minishell
 SRC = src/ft_sh.c \
 	src/get_next_line.c \
 	src/builtins.c \

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_sh.h"
+#include "../includes/libft.h"
 
 static void		my_bzero(void *s, size_t n)
 {

@@ -1,4 +1,4 @@
-FLAG = -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra -I ../includes
 
 NAME = libft.a
 
@@ -10,6 +10,8 @@ SRC = ft_atoi.c \
 	ft_isdigit.c \
 	ft_isprint.c \
 	ft_itoa.c \
+	ft_lstadd.c \
+	ft_lstnew.c \
 	ft_memalloc.c \
 	ft_memccpy.c \
 	ft_memchr.c \
@@ -53,7 +55,9 @@ SRC = ft_atoi.c \
 	ft_strsub.c \
 	ft_strtrim.c \
 	ft_tolower.c \
-	ft_toupper.c
+	ft_toupper.c \
+	ft_putendl_col.c \
+	ft_putstr_col.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 
