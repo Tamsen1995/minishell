@@ -1,3 +1,18 @@
+#include "../includes/ft_sh.h"
+
+// I think this should work
+void        free_twod_arr(char **arr)
+{
+    int i;
+
+    i = 0;
+    while (arr[i])
+    {
+        free(arr[i]);
+        i++;
+    }
+}
+
 // allocates a new environment variables list element
 t_env       *ft_new_env(char *name, char *value)
 {
@@ -5,8 +20,10 @@ t_env       *ft_new_env(char *name, char *value)
 
     if (!(new = (t_env *)malloc(sizeof(t_env))))
         fatal("Error: could not allocate env var list elem in ft_new_env");
-    env->name = ft_strdup(name);
-    env->value = ft_strdup(value);
+    new->next = NULL;
+    new->prev = NULL;
+    new->name = ft_strdup(name);
+    new->value = ft_strdup(value);
     return (new);
 }
 
@@ -14,7 +31,7 @@ t_env       *ft_new_env(char *name, char *value)
 // and then adds the value to it
 void		ft_putenv(t_env **begin_list, char *name, char *value)
 {
-    t_env *new;
+    t_env *tmp;
 
     tmp = NULL;
 	if (!*begin_list)
@@ -35,10 +52,26 @@ void		ft_putenv(t_env **begin_list, char *name, char *value)
 // and allocates a list with all the env vars in it
 t_env       *init_env(char **envv)
 {
-    char **env_var; // each individual env var split into name and value
-
     
+    t_env *env_list;    
+    char **env_var; // each individual env var split into name and value
+    int i;
 
+    i = 1;
+    env_var = NULL;
+    env_var = ft_strsplit(envv[0], '=');
+
+    env_list = ft_new_env(env_var[0], env_var[1]);
+    free_twod_arr(env_var);
+    while (envv[i])
+    {
+    
+        env_var = ft_strsplit(envv[i], '=');
+        ft_putenv(&env_list, env_var[0], env_var[1]);
+        i++;
+        // TODO free env_var array on each iteration
+    }
     // TODO free env list
     // TODO free env list with all the strings in it
+    return (env_list);
 }
