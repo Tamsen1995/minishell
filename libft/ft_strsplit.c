@@ -10,12 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_sh.h"
+#include "../includes/libft.h"
 
 static int		ft_count_words(char const *s, char c)
 {
 	int		i;
 	int		len;
+
+
+	if(!s || !c)
+		return (0);
 
 	i = 0;
 	len = 0;
@@ -66,8 +70,12 @@ char			**ft_strsplit(const char *s, char c)
 	if (!s)
 		return (NULL);
 	amt = ft_count_words(s, c);
+	if (amt <= 0)
+		return(NULL);
+
 	if (!(arr = (char **)malloc(sizeof(char *) * (amt + 1))))
 		return (NULL);
-	ft_line_creator(s, arr, c, amt);
+	arr = ft_line_creator(s, arr, c, amt);
+	arr[amt] = NULL;
 	return (arr);
 }

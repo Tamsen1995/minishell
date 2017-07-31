@@ -10,28 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_sh.h"
+#include "../includes/libft.h"
 
-void		*ft_memmove(void *str1, const void *str2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
-	char			tmp[n];
-	char			*destptr;
-	const	char	*srcptr;
+	unsigned char	*s1;
+	unsigned char	*s2;
+	unsigned char	*temp;
+	int				index;
+	int				limit;
 
-	i = 0;
-	destptr = (char *)str1;
-	srcptr = (const char *)str2;
-	while (i < n)
+	limit = len;
+	index = 0;
+	s1 = (unsigned char *)dst;
+	s2 = (unsigned char *)src;
+	temp = (unsigned char *)malloc(len);
+	while (len--)
 	{
-		tmp[i] = srcptr[i];
-		i++;
+		temp[index] = s2[index];
+		index++;
 	}
-	i = 0;
-	while (i < n)
+	index = 0;
+	while (index < limit)
 	{
-		destptr[i] = tmp[i];
-		i++;
+		s1[index] = temp[index];
+		index++;
 	}
-	return (str1);
+	return ((unsigned char *)dst);
 }
