@@ -33,6 +33,8 @@ typedef struct		s_shell
 }					t_shell;
 
 
+t_env     		 	*sh_putenv(char *name_value);
+t_env   		    *init_env(char **envv);
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
 int					sh_execute(char **args);
