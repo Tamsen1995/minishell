@@ -16,7 +16,7 @@ void sh_loop(t_shell *shell)
         ft_putstr("tamshell$> ");
         get_next_line(0, &line); // waiting for the input
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
-        status = sh_execute(args);
+        status = sh_execute(args, shell);
     }
     // TODO free args
 }

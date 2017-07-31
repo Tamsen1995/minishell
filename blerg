@@ -1,5 +1,4 @@
 git add -A
 git commit -m "[UPD] making the cd move to the home directory.
-got the env variables into a list. Now I need to integrate my t_shell structure into the
-actual shell"
+I think the general logic for the change of directory to the home directory is there. But something is wrong"
 git push origin cd/tohome
