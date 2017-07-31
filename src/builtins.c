@@ -4,7 +4,10 @@
 int sh_cd(char **args)
 {
     if (args[1] == NULL)
-        fatal("tams_shell: expected argument to run cd");
+    {
+        if (chdir("~/") != 0)
+            fatal("sh_cd ERR:001");
+    }
     else
     {
         if (chdir(args[1]) != 0)
@@ -30,6 +33,19 @@ int sh_echo(char **args)
     return (1);
 }
 
+
+
+// Gets a temp pointer of the list (environment)
+// and iterates through it until the sought after
+// name is found
+void get_env_val(char *name, t_env *env)
+{
+    name = NULL; // TESTING
+    env = NULL; // TESTING
+
+}
+
+// WIP setenv man
 void sh_setenv()
 {
     // first I need to find the place where all the

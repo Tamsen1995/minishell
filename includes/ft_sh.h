@@ -18,12 +18,13 @@
 #define FALSE 0
 
 // This list determines the current state of the shell
-typedef struct		s_state
+typedef struct		s_env
 {
-	T_BOOL				running;
-	int				return_val;
-	char			**env;
-}					t_state;
+	struct s_env	*next;
+	struct s_env	*prev;
+	char			*name;
+	char			*value;
+}					t_env;
 
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
