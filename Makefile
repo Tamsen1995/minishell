@@ -5,7 +5,8 @@ NAME = minishell
 SRC = src/ft_sh.c \
 	src/get_next_line.c \
 	src/builtins.c \
-	src/sh_execute.c\
+	src/sh_execute.c \
+	src/init_env.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 
