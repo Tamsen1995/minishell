@@ -1,4 +1,3 @@
 git add -A
-git commit -m "[ADD] cd and exit seem to working just fine. 
-Moving onto the env. The function which will display all env variables just implemented"
-git push origin env/env
+git commit -m "[ADD] Implementing the function setenv, which will take name and value and put it into the env vars"
+git push origin env/setenv
