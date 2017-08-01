@@ -82,7 +82,7 @@ int exec_builtin(char **args, t_shell *shell)
     if (ft_strcmp(args[0], "unsetenv") == 0)
         return (1);
     if (ft_strcmp(args[0], "env") == 0)
-        return (1);
+        return (sh_env(shell));
     if (ft_strcmp(args[0], "exit") == 0) // DONE
         return (sh_exit());
     fatal("Error in exec_builtin: builtin recognized, but flow not properly redirected");

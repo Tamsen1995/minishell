@@ -10,6 +10,7 @@ SRC = src/main.c \
 	src/init_shell.c \
 	src/builtin_cd.c \
 	src/check_bin_cmd.c \
+	src/builtin_env.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 

@@ -36,6 +36,9 @@ typedef struct		s_shell
 
 T_BOOL  		    check_bin_cmd(char *potential_cmd);
 t_env     		 	*sh_putenv(char *name_value);
+int      			sh_env(t_shell *shell);
+
+
 t_env   		    *init_env(char **envv);
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
