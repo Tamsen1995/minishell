@@ -7,24 +7,28 @@ void fatal(char *err_msg)
     //exit (-1);
 }
 
+
+/*
+** if the pid is a zero, we assume it to be
+** the child process
+*/
+
 int         sh_launch(char **args, char **envv)
 {
     pid_t pid;
     pid_t wpid;
     int status;
+    char *command;
 
     // fork program and save the return
+    command = args[0];
     pid = fork();
-    // if the pid is a zero, we assume it to be
-    // the child process
-
-
     if (check_bin_cmd(args[0]) == TRUE) // binary commands
-        ft_strjoin(BIN, args[0]); // TODO free binary string command
+        command = ft_strjoin(BIN, args[0]); // TODO free binary string command
     if (pid == 0)
     {
         // executing the sought after program
-        if (execve(args[0], args, envv) == -1) // Change to execve later
+        if (execve(command, args, envv) == -1) // Change to execve later
             fatal("ERROR in child process (sh_launch)");
     }
     else if (pid < 0)

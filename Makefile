@@ -8,7 +8,8 @@ SRC = src/main.c \
 	src/sh_execute.c \
 	src/init_env.c \
 	src/init_shell.c \
-	src/builtin_cd.c
+	src/builtin_cd.c \
+	src/check_bin_cmd.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 
