@@ -7,7 +7,7 @@ void fatal(char *err_msg)
     //exit (-1);
 }
 
-int sh_launch(char **args, char **envv)
+int         sh_launch(char **args, char **envv)
 {
     pid_t pid;
     pid_t wpid;
@@ -17,6 +17,10 @@ int sh_launch(char **args, char **envv)
     pid = fork();
     // if the pid is a zero, we assume it to be
     // the child process
+
+
+    if (check_bin_cmd(args[0]) == TRUE) // binary commands
+        ft_strjoin(BIN, args[0]); // TODO free binary string command
     if (pid == 0)
     {
         // executing the sought after program
