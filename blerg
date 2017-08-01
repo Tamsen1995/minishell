@@ -1,4 +1,4 @@
 git add -A
 git commit -m "[UPD] Implementing the ls binary with the execve in my shell. 
 Just defined the bin as BIN, now I need to test if I can just link them into the execve like that through concatenation."
-git push origin cd/tohome
+git push origin ls/implement
