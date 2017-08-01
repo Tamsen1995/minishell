@@ -1,4 +1,4 @@
 git add -A
 git commit -m "[UPD] cd and exit seem to working just fine. 
 Moving onto the env. The function which will display all env variables."
-git push origin ls/implement
+git push origin env/env
