@@ -45,6 +45,7 @@ void		ft_putenv(t_env **begin_list, char *name, char *value)
         while (tmp->next)
             tmp = tmp->next;
         tmp->next = ft_new_env(name, value);
+        tmp->next->prev = tmp;
     }
 }
 

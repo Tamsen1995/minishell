@@ -34,6 +34,7 @@ typedef struct		s_shell
 	// Add more data variables later
 }					t_shell;
 
+int					sh_unsetenv(char **args, t_shell *shell);
 void				ft_putenv(t_env **begin_list, char *name, char *value);
 T_BOOL  		    check_bin_cmd(char *potential_cmd);
 int      			sh_env(t_shell *shell);

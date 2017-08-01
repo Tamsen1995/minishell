@@ -13,6 +13,7 @@ SRC = src/main.c \
 	src/builtins/builtin_echo.c \
 	src/builtins/builtin_setenv.c \
 	src/builtins/builtin_cd.c \
+	src/builtins/builtin_unsetenv.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 

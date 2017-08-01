@@ -80,7 +80,7 @@ int exec_builtin(char **args, t_shell *shell)
     if (ft_strcmp(args[0], "setenv") == 0) // DONE
         return (sh_setenv(args, shell));
     if (ft_strcmp(args[0], "unsetenv") == 0)
-        return (1);
+        return (sh_unsetenv(args, shell));
     if (ft_strcmp(args[0], "env") == 0)
         return (sh_env(shell));
     if (ft_strcmp(args[0], "exit") == 0) // DONE

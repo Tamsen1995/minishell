@@ -35,13 +35,34 @@ void        sh_loop(t_shell *shell, char **envv)
     // TODO free args
 }
 
+// TESTING
+void        testing_prev(t_env *env)
+{
+    t_env *tmp;
+
+    tmp = env;
+    while (tmp->next)
+        tmp = tmp->next;
+    while (tmp->prev)
+    {
+        ft_putendl(tmp->name);
+        tmp = tmp->prev;
+    }
+
+
+}
+
 int         main(int ac, char **av, char **envv)
 {
     t_shell *shell;
 
     shell = NULL;
     shell = init_shell(ac, av, envv); // Initiating the shell
-    sh_loop(shell, envv);  // the programs main loop
+ 
+    testing_prev(shell->env); // TESTING
+ 
+ 
+  //  sh_loop(shell, envv);  // the programs main loop
     // TODO free shell
     return (0);
 }
