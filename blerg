@@ -1,4 +1,5 @@
 git add -A
-git commit -m "[UPD] making the cd move to the home directory.
-I think the general logic for the change of directory to the home directory is there. But something is wrong"
+git commit -m "[UPD] So turns out I didn't put the HOME 
+value as the path but rather the home name. 
+cd without arguments redirects to the home directory now."
 git push origin cd/tohome

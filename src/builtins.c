@@ -10,7 +10,7 @@ char *get_home_path(t_shell *shell)
     home_path = NULL;
     while (ft_strcmp(tmp->name, "HOME") != 0)
         tmp = tmp->next;
-    home_path = tmp->name;
+    home_path = tmp->value;
     return (home_path);
 }
 
@@ -24,12 +24,12 @@ int sh_cd(char **args, t_shell *shell)
     if (args[1] == NULL)
     {
         if (chdir(home_path) != 0)
-            fatal("sh_cd ERR:001");
+            fatal("sh_cd ERR:004");
     }
     else
     {
         if (chdir(args[1]) != 0)
-            fatal("sh_cd ERR:001");
+            fatal("sh_cd ERR:002");
     }
 
     // TODO free home path
