@@ -21,22 +21,6 @@ void sh_loop(t_shell *shell, char **envv)
     // TODO free args
 }
 
-
-
-// initiaing the shell and the data required for it
-t_shell     *init_shell(int ac, char **av, char **envv)
-{
-    t_shell *shell;
-
-    shell = NULL;
-    av = NULL;
-    ac = 0;
-    if (!(shell = (t_shell *)malloc(sizeof(t_shell))))
-        fatal("Couldn't allocate shell in init_shell");
-    shell->env = init_env(envv);
-    return (shell); // TESTING
-}
-
 int         main(int ac, char **av, char **envv)
 {
     t_shell *shell;

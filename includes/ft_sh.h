@@ -13,6 +13,7 @@
 
 
 # define BUFF_SIZE 8
+# define BIN "/bin/"
 #define T_BOOL int
 #define TRUE 1
 #define FALSE 0
@@ -42,5 +43,6 @@ int					sh_launch(char **args, char **envv);
 int					sh_cd(char **args, t_shell *shell);
 int					sh_exit(void);
 int					sh_echo(char **args);
+t_shell  		   *init_shell(int ac, char **av, char **envv);
 
 #endif
