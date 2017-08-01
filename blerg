@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[ADD] re-organizing architecture. Now setting out to the setenv function"
+git commit -m "[ADD] setenv done. Now setting out to the unsetenv function"
 git push origin env/setenv

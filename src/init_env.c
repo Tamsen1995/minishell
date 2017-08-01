@@ -65,7 +65,6 @@ t_env       *init_env(char **envv)
     free_twod_arr(env_var);
     while (envv[i])
     {
-    
         env_var = ft_strsplit(envv[i], '=');
         ft_putenv(&env_list, env_var[0], env_var[1]);
         i++;

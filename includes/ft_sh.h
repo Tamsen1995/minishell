@@ -29,16 +29,15 @@ typedef struct		s_env
 
 typedef struct		s_shell
 {
+	int				argc; // Amount of arguments passed into my shell
 	struct s_env	*env; // The environment variables
 	// Add more data variables later
 }					t_shell;
 
-
+void				ft_putenv(t_env **begin_list, char *name, char *value);
 T_BOOL  		    check_bin_cmd(char *potential_cmd);
-t_env     		 	*sh_putenv(char *name_value);
 int      			sh_env(t_shell *shell);
-
-
+int   				sh_setenv(char **args, t_shell *shell);
 t_env   		    *init_env(char **envv);
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);

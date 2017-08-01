@@ -76,9 +76,9 @@ int exec_builtin(char **args, t_shell *shell)
     if (ft_strcmp(args[0], "echo") == 0) // WIP
         return (sh_echo(args));
     if (ft_strcmp(args[0], "cd") == 0) // DONE ?
-        return (sh_cd(args,shell));
-    if (ft_strcmp(args[0], "setenv") == 0)
-        return (1);
+        return (sh_cd(args, shell));
+    if (ft_strcmp(args[0], "setenv") == 0) // DONE
+        return (sh_setenv(args, shell));
     if (ft_strcmp(args[0], "unsetenv") == 0)
         return (1);
     if (ft_strcmp(args[0], "env") == 0)

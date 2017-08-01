@@ -4,7 +4,20 @@
 // intialize a prompt for the user
 // Read a command from the standard input
 // Parse it, meaning we seperate the command into a program and a set of arguments
-void sh_loop(t_shell *shell, char **envv)
+
+int         count_args(char **args)
+{
+    int argc;
+
+    argc = 0;
+    if (!args)
+        return (0);
+    while (args[argc])
+        argc++;
+    return (argc); // TODO test this function
+}
+
+void        sh_loop(t_shell *shell, char **envv)
 {
     int status;
     char **args;
@@ -16,6 +29,7 @@ void sh_loop(t_shell *shell, char **envv)
         ft_putstr("tamshell$> ");
         get_next_line(0, &line); // waiting for the input
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
+        shell->argc = count_args(args);
         status = sh_execute(args, envv, shell);
     }
     // TODO free args
