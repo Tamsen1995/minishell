@@ -1,5 +1,5 @@
 git add -A
-git commit -m "[UPD] making the cd move to the home directory.
-got the env variables into a list. Now I need to integrate my t_shell structure into the
-actual shell"
-git push origin builtin/cd
+git commit -m "[UPD] So turns out I didn't put the HOME 
+value as the path but rather the home name. 
+cd without arguments redirects to the home directory now."
+git push origin cd/tohome

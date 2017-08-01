@@ -16,9 +16,8 @@ void sh_loop(t_shell *shell)
         ft_putstr("tamshell$> ");
         get_next_line(0, &line); // waiting for the input
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
-        status = sh_execute(args);
+        status = sh_execute(args, shell);
     }
-
     // TODO free args
 }
 
@@ -36,16 +35,6 @@ t_shell     *init_shell(int ac, char **av, char **envv)
         fatal("Couldn't allocate shell in init_shell");
     shell->env = init_env(envv);
     return (shell); // TESTING
-}
-
-void        test_env(t_env *env) // TESTING
-{
-    while (env)
-    {
-        ft_putendl(env->name);
-        env = env->next;
-    }
-
 }
 
 int         main(int ac, char **av, char **envv)

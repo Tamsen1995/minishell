@@ -1,18 +1,38 @@
 #include "../includes/ft_sh.h"
 
-// cd
-int sh_cd(char **args)
+char *get_home_path(t_shell *shell)
 {
+    t_env   *tmp;
+    char    *home_path;
+
+    tmp = NULL;
+    tmp = shell->env;
+    home_path = NULL;
+    while (ft_strcmp(tmp->name, "HOME") != 0)
+        tmp = tmp->next;
+    home_path = tmp->value;
+    return (home_path);
+}
+
+// cd
+int sh_cd(char **args, t_shell *shell)
+{
+    char *home_path;
+
+    home_path = NULL;
+    home_path = get_home_path(shell);
     if (args[1] == NULL)
     {
-        if (chdir("~/") != 0)
-            fatal("sh_cd ERR:001");
+        if (chdir(home_path) != 0)
+            fatal("sh_cd ERR:004");
     }
     else
     {
         if (chdir(args[1]) != 0)
-            fatal("sh_cd ERR:001");
+            fatal("sh_cd ERR:002");
     }
+
+    // TODO free home path
     return (1);
 }
 
