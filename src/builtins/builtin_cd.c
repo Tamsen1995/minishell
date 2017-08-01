@@ -1,4 +1,4 @@
-#include "../includes/ft_sh.h"
+#include "../../includes/ft_sh.h"
 
 char *get_home_path(t_shell *shell)
 {

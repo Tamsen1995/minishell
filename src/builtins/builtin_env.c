@@ -1,4 +1,4 @@
-#include "../includes/ft_sh.h"
+#include "../../includes/ft_sh.h"
 
 // Solely responsible for printing of all 
 // envirionment variables

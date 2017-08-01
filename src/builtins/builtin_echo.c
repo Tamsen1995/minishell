@@ -1,10 +1,4 @@
-#include "../includes/ft_sh.h"
-
-// simply exits the process
-int sh_exit(void)
-{
-    return (0);
-}
+#include "../../includes/ft_sh.h"
 
 // TODO
 // implement all the different flags (echo man)

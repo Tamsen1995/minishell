@@ -4,13 +4,15 @@ LIBFT = libft/libft.a
 NAME = minishell
 SRC = src/main.c \
 	src/get_next_line.c \
-	src/builtins.c \
 	src/sh_execute.c \
 	src/init_env.c \
 	src/init_shell.c \
-	src/builtin_cd.c \
 	src/check_bin_cmd.c \
-	src/builtin_env.c \
+	src/builtins/builtin_env.c \
+	src/builtins/builtin_exit.c \
+	src/builtins/builtin_echo.c \
+	src/builtins/builtin_setenv.c \
+	src/builtins/builtin_cd.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 
