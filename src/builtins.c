@@ -24,12 +24,12 @@ int sh_cd(char **args, t_shell *shell)
     if (args[1] == NULL)
     {
         if (chdir(home_path) != 0)
-            fatal("sh_cd ERR:004");
+            fatal("");
     }
     else
     {
         if (chdir(args[1]) != 0)
-            fatal("sh_cd ERR:002");
+            fatal("");
     }
 
     // TODO free home path

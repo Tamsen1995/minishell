@@ -7,7 +7,7 @@ void fatal(char *err_msg)
     //exit (-1);
 }
 
-int sh_launch(char **args)
+int sh_launch(char **args, char **envv)
 {
     pid_t pid;
     pid_t wpid;
@@ -20,8 +20,8 @@ int sh_launch(char **args)
     if (pid == 0)
     {
         // executing the sought after program
-        if (execvp(args[0], args) == -1) // Change to execve later
-            fatal("sh_launch ERR:001");
+        if (execve(args[0], args, envv) == -1) // Change to execve later
+            fatal("ERROR in child process (sh_launch)");
     }
     else if (pid < 0)
         fatal("sh_launch ERR:002");
@@ -82,12 +82,12 @@ int exec_builtin(char **args, t_shell *shell)
 }
 
 // function that will either start a process or a builtin
-int sh_execute(char **args, t_shell *shell)
+int sh_execute(char **args, char **envv, t_shell *shell)
 {        
     // There was an empty command
-    if (args[0] == NULL)
+    if (!args || !args[0])
         return (1);
     if (check_builtins(args) == TRUE) 
         return (exec_builtin(args, shell)); // WIP
-    return (sh_launch(args));
+    return (sh_launch(args, envv));
 }

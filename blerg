@@ -1,5 +1,3 @@
 git add -A
-git commit -m "[UPD] So turns out I didn't put the HOME 
-value as the path but rather the home name. 
-cd without arguments redirects to the home directory now."
+git commit -m "[UPD] Implementing the ls binary with the execve in my shell"
 git push origin cd/tohome
