@@ -62,13 +62,13 @@ T_BOOL check_builtins(char **args)
 // redirects the flow to the appropiate
 // builtin
 // returns whatever the builtin returns
-int exec_builtin(char **args)
+int exec_builtin(char **args, t_shell *shell)
 {
     // Just output the command for now
     if (ft_strcmp(args[0], "echo") == 0) // WIP
         return (sh_echo(args));
     if (ft_strcmp(args[0], "cd") == 0) // DONE ?
-        return (sh_cd(args));
+        return (sh_cd(args,shell));
     if (ft_strcmp(args[0], "setenv") == 0)
         return (1);
     if (ft_strcmp(args[0], "unsetenv") == 0)
@@ -82,12 +82,12 @@ int exec_builtin(char **args)
 }
 
 // function that will either start a process or a builtin
-int sh_execute(char **args)
+int sh_execute(char **args, t_shell *shell)
 {        
     // There was an empty command
     if (args[0] == NULL)
-        return (1); 
+        return (1);
     if (check_builtins(args) == TRUE) 
-        return exec_builtin(args); // WIP
-    return sh_launch(args);
+        return (exec_builtin(args, shell)); // WIP
+    return (sh_launch(args));
 }

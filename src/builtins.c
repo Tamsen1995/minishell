@@ -1,15 +1,38 @@
 #include "../includes/ft_sh.h"
 
-// cd
-int sh_cd(char **args)
+char *get_home_path(t_shell *shell)
 {
+    t_env   *tmp;
+    char    *home_path;
+
+    tmp = NULL;
+    tmp = shell->env;
+    home_path = NULL;
+    while (ft_strcmp(tmp->name, "HOME") != 0)
+        tmp = tmp->next;
+    home_path = tmp->value;
+    return (home_path);
+}
+
+// cd
+int sh_cd(char **args, t_shell *shell)
+{
+    char *home_path;
+
+    home_path = NULL;
+    home_path = get_home_path(shell);
     if (args[1] == NULL)
-        fatal("tams_shell: expected argument to run cd");
+    {
+        if (chdir(home_path) != 0)
+            fatal("sh_cd ERR:004");
+    }
     else
     {
         if (chdir(args[1]) != 0)
-            fatal("sh_cd ERR:001");
+            fatal("sh_cd ERR:002");
     }
+
+    // TODO free home path
     return (1);
 }
 
@@ -30,18 +53,3 @@ int sh_echo(char **args)
     return (1);
 }
 
-void sh_setenv()
-{
-    // first I need to find the place where all the
-    // env variables are stored
-    
-    // Then I need to unset the variable of the name
-    // IF it even exists
-
-    // then allocate enough memory for the variable and its value
-    // "=" and "\0"
-
-    // and then set it with something similar to putenv
-
-
-}

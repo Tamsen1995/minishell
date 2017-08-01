@@ -4,7 +4,7 @@
 // intialize a prompt for the user
 // Read a command from the standard input
 // Parse it, meaning we seperate the command into a program and a set of arguments
-void sh_loop(void)
+void sh_loop(t_shell *shell)
 {
     int status;
     char **args;
@@ -16,14 +16,35 @@ void sh_loop(void)
         ft_putstr("tamshell$> ");
         get_next_line(0, &line); // waiting for the input
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
-        status = sh_execute(args);
+        status = sh_execute(args, shell);
     }
+    // TODO free args
 }
 
-int main(void)
+
+
+// initiaing the shell and the data required for it
+t_shell     *init_shell(int ac, char **av, char **envv)
 {
-    // starting the program
-    sh_loop();
+    t_shell *shell;
+
+    shell = NULL;
+    av = NULL;
+    ac = 0;
+    if (!(shell = (t_shell *)malloc(sizeof(t_shell))))
+        fatal("Couldn't allocate shell in init_shell");
+    shell->env = init_env(envv);
+    return (shell); // TESTING
+}
+
+int         main(int ac, char **av, char **envv)
+{
+    t_shell *shell;
+
+    shell = NULL;
+    shell = init_shell(ac, av, envv); // Initiating the shell
+    sh_loop(shell);  // the programs main loop
+    // TODO free shell
     return (0);
 }
 

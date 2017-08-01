@@ -18,18 +18,28 @@
 #define FALSE 0
 
 // This list determines the current state of the shell
-typedef struct		s_state
+typedef struct		s_env
 {
-	T_BOOL				running;
-	int				return_val;
-	char			**env;
-}					t_state;
+	struct s_env	*next;
+	struct s_env	*prev;
+	char			*name;
+	char			*value;
+}					t_env;
 
+typedef struct		s_shell
+{
+	struct s_env	*env; // The environment variables
+	// Add more data variables later
+}					t_shell;
+
+
+t_env     		 	*sh_putenv(char *name_value);
+t_env   		    *init_env(char **envv);
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
-int					sh_execute(char **args);
+int					sh_execute(char **args, t_shell *shell);
 int					sh_launch(char **args);
-int					sh_cd(char **args);
+int					sh_cd(char **args, t_shell *shell);
 int					sh_exit(void);
 int					sh_echo(char **args);
 
