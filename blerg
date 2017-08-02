@@ -1,3 +1,4 @@
 git add -A
-git commit -m "[UPD] Implemented a functioning previous pointer"
+git commit -m "[UPD] Done implementing the unsetenv, 
+most of my issues with segfaults resulted due to my neglection of the previous pointer"
 git push origin env/unsetenv
