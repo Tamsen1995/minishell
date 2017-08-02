@@ -1,4 +1,4 @@
-#include "../includes/ft_sh.h"
+#include "../../includes/ft_sh.h"
 
 char *get_home_path(t_shell *shell)
 {
@@ -24,32 +24,14 @@ int sh_cd(char **args, t_shell *shell)
     if (args[1] == NULL)
     {
         if (chdir(home_path) != 0)
-            fatal("sh_cd ERR:004");
+            fatal("");
     }
     else
     {
         if (chdir(args[1]) != 0)
-            fatal("sh_cd ERR:002");
+            fatal("");
     }
 
     // TODO free home path
     return (1);
 }
-
-// simply exits the process
-int sh_exit(void)
-{
-    return (0);
-}
-
-// TODO
-// implement all the different flags (echo man)
-// For now only the output has been implemented
-int sh_echo(char **args)
-{
-    // For now sh_echo only outputs
-    // it doesn't handle any of echo's flags yet
-    ft_putendl(args[1]);
-    return (1);
-}
-

@@ -7,21 +7,29 @@ void fatal(char *err_msg)
     //exit (-1);
 }
 
-int sh_launch(char **args)
+
+/*
+** if the pid is a zero, we assume it to be
+** the child process
+*/
+
+int         sh_launch(char **args, char **envv)
 {
     pid_t pid;
     pid_t wpid;
     int status;
+    char *command;
 
     // fork program and save the return
+    command = args[0];
     pid = fork();
-    // if the pid is a zero, we assume it to be
-    // the child process
+    if (check_bin_cmd(args[0]) == TRUE) // binary commands
+        command = ft_strjoin(BIN, args[0]); // TODO free binary string command
     if (pid == 0)
     {
         // executing the sought after program
-        if (execvp(args[0], args) == -1) // Change to execve later
-            fatal("sh_launch ERR:001");
+        if (execve(command, args, envv) == -1) // Change to execve later
+            fatal("ERROR in child process (sh_launch)");
     }
     else if (pid < 0)
         fatal("sh_launch ERR:002");
@@ -68,13 +76,13 @@ int exec_builtin(char **args, t_shell *shell)
     if (ft_strcmp(args[0], "echo") == 0) // WIP
         return (sh_echo(args));
     if (ft_strcmp(args[0], "cd") == 0) // DONE ?
-        return (sh_cd(args,shell));
-    if (ft_strcmp(args[0], "setenv") == 0)
-        return (1);
+        return (sh_cd(args, shell));
+    if (ft_strcmp(args[0], "setenv") == 0) // DONE
+        return (sh_setenv(args, shell));
     if (ft_strcmp(args[0], "unsetenv") == 0)
-        return (1);
+        return (sh_unsetenv(args, shell));
     if (ft_strcmp(args[0], "env") == 0)
-        return (1);
+        return (sh_env(shell));
     if (ft_strcmp(args[0], "exit") == 0) // DONE
         return (sh_exit());
     fatal("Error in exec_builtin: builtin recognized, but flow not properly redirected");
@@ -82,12 +90,12 @@ int exec_builtin(char **args, t_shell *shell)
 }
 
 // function that will either start a process or a builtin
-int sh_execute(char **args, t_shell *shell)
+int sh_execute(char **args, char **envv, t_shell *shell)
 {        
     // There was an empty command
-    if (args[0] == NULL)
+    if (!args || !args[0])
         return (1);
     if (check_builtins(args) == TRUE) 
         return (exec_builtin(args, shell)); // WIP
-    return (sh_launch(args));
+    return (sh_launch(args, envv));
 }

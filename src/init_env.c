@@ -45,6 +45,7 @@ void		ft_putenv(t_env **begin_list, char *name, char *value)
         while (tmp->next)
             tmp = tmp->next;
         tmp->next = ft_new_env(name, value);
+        tmp->next->prev = tmp;
     }
 }
 
@@ -65,7 +66,6 @@ t_env       *init_env(char **envv)
     free_twod_arr(env_var);
     while (envv[i])
     {
-    
         env_var = ft_strsplit(envv[i], '=');
         ft_putenv(&env_list, env_var[0], env_var[1]);
         i++;
