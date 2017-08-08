@@ -1,4 +1,3 @@
 git add -A
-git commit -m "[UPD] Done implementing the unsetenv, 
-most of my issues with segfaults resulted due to my neglection of the previous pointer"
-git push origin env/unsetenv
+git commit -m "[UPD] implementing some more binary commands"
+git push origin bin/path
