@@ -1,6 +1,19 @@
 #include "../includes/ft_sh.h"
 
 /*
+** Takes in an env_var and frees it
+*/
+void free_env_var(t_env *env_var)
+{
+    free(env_var->name);
+    env_var->name = NULL;
+    free(env_var->value);
+    env_var->value = NULL;
+    free(env_var);
+    env_var = NULL;
+}
+
+/*
 ** Takes in the shell's environment and frees it
 */
 void        free_env(t_env *env)
@@ -16,14 +29,10 @@ void        free_env(t_env *env)
         tmp = tmp->prev;
     while (tmp->prev)
     {
-       tmp = tmp->prev;
-       free(tmp->next->name);
-       tmp->next->name = NULL;
-       free(tmp->next->value);
-       tmp->next->value = NULL;
-       free(tmp->next);
-       tmp->next = NULL;
+        tmp = tmp->prev;
+        free_env_var(tmp->next);
     }
+    free_env_var(tmp);
 }
 
 /*

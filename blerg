@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[UPD] Freed the env, but still need to test thoroughly and see if nothing's been missed"
+git commit -m "[UPD] Freed the env"
 git push origin free/env_shell
