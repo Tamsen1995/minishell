@@ -1,3 +1,4 @@
 git add -A
-git commit -m "[ADD] Implemented the prompt and a basic loop, acting as the main loop of the program. The loop splits the line given into arguments thus far, but only if they are delimited by spaces"
-git push origin master
+git commit -m "[UPD] making sure that the args will be split properly even if they are delimited by tabs and not spaces.
+Done by a function which will go through the tentative string and then replace potential tabs with spaces"
+git push origin fix/tabs

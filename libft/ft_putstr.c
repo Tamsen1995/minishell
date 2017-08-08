@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_sh.h"
+#include "../includes/libft.h"
 
 static	void		my_putchar(char c)
 {
