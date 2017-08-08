@@ -6,7 +6,10 @@ void        free_twod_arr(char **arr)
     int i;
 
     if (!arr)
+    {
+        ft_putendl("TESTING");
         return ;
+    }
     i = 0;
     while (arr[i])
     {
@@ -63,13 +66,13 @@ t_env       *init_env(char **envv)
     i = 1;
     env_var = NULL;
     env_var = ft_strsplit(envv[0], '=');
-
     env_list = ft_new_env(env_var[0], env_var[1]);
     free_twod_arr(env_var);
     while (envv[i])
     {
         env_var = ft_strsplit(envv[i], '=');
         ft_putenv(&env_list, env_var[0], env_var[1]);
+        free_twod_arr(env_var);
         i++;
         // TODO free env_var array on each iteration
     }
