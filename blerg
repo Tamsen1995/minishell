@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[UPD] Going to make sure to free all the memory now"
-git push origin free/memory
+git commit -m "[UPD] Need to refactor ft_strsplit logic because it's really messy and hacky"
+git push origin new/strsplit
