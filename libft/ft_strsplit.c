@@ -67,12 +67,12 @@ char			**ft_strsplit(const char *s, char c)
 	char	**arr;
 
 	amt = 0;
+	arr = NULL;
 	if (!s)
 		return (NULL);
 	amt = ft_count_words(s, c);
 	if (amt <= 0)
-		return(NULL);
-
+		return (NULL);
 	if (!(arr = (char **)malloc(sizeof(char *) * (amt + 1))))
 		return (NULL);
 	arr = ft_line_creator(s, arr, c, amt);

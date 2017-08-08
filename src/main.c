@@ -50,6 +50,7 @@ void        sh_loop(t_shell *shell, char **envv)
     line = NULL;
     while (status == 1) 
     {
+        args = NULL;
         ft_putstr("tamshell$> ");
         get_next_line(0, &buf); // waiting for the input
         line = replace_tabs(buf);
@@ -58,7 +59,6 @@ void        sh_loop(t_shell *shell, char **envv)
         status = sh_execute(args, envv, shell);
         free(line);
         free_twod_arr(args);
-        // TODO free args
     }
 
 }

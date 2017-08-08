@@ -5,6 +5,8 @@ void        free_twod_arr(char **arr)
 {
     int i;
 
+    if (!arr)
+        return ;
     i = 0;
     while (arr[i])
     {
