@@ -8,6 +8,7 @@ SRC = src/main.c \
 	src/init_env.c \
 	src/init_shell.c \
 	src/check_bin_cmd.c \
+	src/free_shell.c \
 	src/builtins/builtin_env.c \
 	src/builtins/builtin_exit.c \
 	src/builtins/builtin_echo.c \

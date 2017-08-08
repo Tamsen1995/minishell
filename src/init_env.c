@@ -7,7 +7,6 @@ void        free_twod_arr(char **arr)
 
     if (!arr)
     {
-        ft_putendl("TESTING");
         return ;
     }
     i = 0;

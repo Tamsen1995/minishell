@@ -87,6 +87,7 @@ int         main(int ac, char **av, char **envv)
     //testing_prev(shell->env); // TESTING
     sh_loop(shell, envv);  // the programs main loop
     // TODO free shell
+    free_shell(shell);
     return (0);
 }
 
