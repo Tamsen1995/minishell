@@ -56,9 +56,11 @@ void        sh_loop(t_shell *shell, char **envv)
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
         shell->argc = count_args(args);
         status = sh_execute(args, envv, shell);
-        // TODO free line
+        free(line);
+        free_twod_arr(args);
+        // TODO free args
     }
-    // TODO free args
+
 }
 
 // TESTING

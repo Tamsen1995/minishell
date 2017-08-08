@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include "../includes/libft.h"
+#include "../includes/ft_ls.h"
 
 
 # define BUFF_SIZE 8
