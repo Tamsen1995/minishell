@@ -17,20 +17,46 @@ int         count_args(char **args)
     return (argc); // TODO test this function
 }
 
+
+// receives a buffer with potential tabs in it
+// makes a copy of this buffer in which the tabs
+// are replaced with spaces
+char        *replace_tabs(char *buf)
+{
+    char *line;
+    int i;
+
+    i = 0;
+    line = NULL;
+    line = ft_strdup(buf);
+    while (line[i])
+    {
+        if (line[i] == '\t')
+            line [i] = ' ';
+        i++;
+    }
+    return (line);
+}
+
 void        sh_loop(t_shell *shell, char **envv)
 {
     int status;
     char **args;
     char *line;
+    char *buf;
 
     status = 1;
+    buf = NULL;
+    line = NULL;
     while (status == 1) 
     {
         ft_putstr("tamshell$> ");
-        get_next_line(0, &line); // waiting for the input
+        get_next_line(0, &buf); // waiting for the input
+        line = replace_tabs(buf);
         args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
         shell->argc = count_args(args);
         status = sh_execute(args, envv, shell);
+        // TODO free line
     }
     // TODO free args
 }
@@ -48,8 +74,6 @@ void        testing_prev(t_env *env)
         ft_putendl(tmp->name);
         tmp = tmp->prev;
     }
-
-
 }
 
 int         main(int ac, char **av, char **envv)
@@ -67,7 +91,7 @@ int         main(int ac, char **av, char **envv)
 
 // Execute and run the parsed command
     // seperate processes and builtins
-    // a process will imply a child an process being split from its parent
+    // a process will imply a child a process being split from its parent
     // and then running seperately
 
     // a builtin will be a command within the shell itself
