@@ -31,6 +31,7 @@ typedef struct		s_env
 typedef struct		s_shell
 {
 	int				argc; // Amount of arguments passed into my shell
+	char			**args;
 	struct s_env	*env; // The environment variables
 	// Add more data variables later
 }					t_shell;
@@ -44,8 +45,8 @@ int   				sh_setenv(char **args, t_shell *shell);
 t_env   		    *init_env(char **envv);
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
-int					sh_execute(char **args, char **envv, t_shell *shell);
-int					sh_launch(char **args, char **envv);
+int					sh_execute(char **envv, t_shell *shell);
+int					sh_launch(char **envv, t_shell *shell);
 int					sh_cd(char **args, t_shell *shell);
 int					sh_exit(void);
 int					sh_echo(char **args);

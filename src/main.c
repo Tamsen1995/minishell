@@ -41,7 +41,6 @@ char        *replace_tabs(char *buf)
 void        sh_loop(t_shell *shell, char **envv)
 {
     int status;
-    char **args;
     char *line;
     char *buf;
 
@@ -50,15 +49,15 @@ void        sh_loop(t_shell *shell, char **envv)
     line = NULL;
     while (status == 1) 
     {
-        args = NULL;
+        shell->args = NULL;
         ft_putstr("tamshell$> ");
         get_next_line(0, &buf); // waiting for the input
         line = replace_tabs(buf);
-        args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
-        shell->argc = count_args(args);
-        status = sh_execute(args, envv, shell);
+        shell->args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
+        shell->argc = count_args(shell->args);
+        status = sh_execute(envv, shell);
         free(line);
-        free_twod_arr(args);
+        free_twod_arr(shell->args);
     }
 
 }
@@ -87,7 +86,6 @@ int         main(int ac, char **av, char **envv)
     //testing_prev(shell->env); // TESTING
     sh_loop(shell, envv);  // the programs main loop
     free_shell(shell);
-
     return (0);
 }
 
