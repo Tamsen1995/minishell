@@ -1,5 +1,5 @@
 git add -A
 git commit -m "[UPD] The PATH variable will now be subject to a a splitting of its value into a 2d array.
 Each array within this array represents a folder containing binaries to be checked. If the command of the user matches with any of the binaries
-contained in these folder, it will be executed. Changing the PATH variable or unsetting it with influence this action of course."
+contained in these folders, it will be executed. Changing the PATH variable or unsetting it with influence this action of course."
 git push origin path/var

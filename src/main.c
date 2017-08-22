@@ -1,9 +1,5 @@
 #include "../includes/ft_sh.h"
 
-// the main loop of the program
-// intialize a prompt for the user
-// Read a command from the standard input
-// Parse it, meaning we seperate the command into a program and a set of arguments
 
 int         count_args(char **args)
 {
@@ -17,10 +13,12 @@ int         count_args(char **args)
     return (argc); // TODO test this function
 }
 
+/*
+** receives a buffer with potential tabs in it
+** makes a copy of this buffer in which the tabs
+** are replaced with spaces
+*/
 
-// receives a buffer with potential tabs in it
-// makes a copy of this buffer in which the tabs
-// are replaced with spaces
 char        *replace_tabs(char *buf)
 {
     char *line;
@@ -38,6 +36,13 @@ char        *replace_tabs(char *buf)
     return (line);
 }
 
+/*
+** the main loop of the program
+** intialize a prompt for the user
+** Read a command from the standard input
+** Parse it, meaning we seperate the command into a program and a set of arguments
+*/
+
 void        sh_loop(t_shell *shell, char **envv)
 {
     int status;
@@ -51,9 +56,9 @@ void        sh_loop(t_shell *shell, char **envv)
     {
         shell->args = NULL;
         ft_putstr("tamshell$> ");
-        get_next_line(0, &buf); // waiting for the input
+        get_next_line(0, &buf);
         line = replace_tabs(buf);
-        shell->args = ft_strsplit(line, ' '); // splitting the input into commands and parameters
+        shell->args = ft_strsplit(line, ' ');
         shell->argc = count_args(shell->args);
         status = sh_execute(envv, shell);
         free(line);
@@ -62,7 +67,10 @@ void        sh_loop(t_shell *shell, char **envv)
 
 }
 
-// TESTING
+/*
+** A testing function to test if the previous pointer was properly implemented
+*/
+
 void        testing_prev(t_env *env)
 {
     t_env *tmp;
@@ -77,22 +85,28 @@ void        testing_prev(t_env *env)
     }
 }
 
+/*
+** Initiating the shell
+** then re-directing to the
+** programs main loop
+*/
+
 int         main(int ac, char **av, char **envv)
 {
     t_shell *shell;
 
     shell = NULL;
-    shell = init_shell(ac, av, envv); // Initiating the shell
+    shell = init_shell(ac, av, envv);
     //testing_prev(shell->env); // TESTING
     sh_loop(shell, envv);  // the programs main loop
     free_shell(shell);
     return (0);
 }
 
-
-// Execute and run the parsed command
-    // seperate processes and builtins
-    // a process will imply a child a process being split from its parent
-    // and then running seperately
-
-    // a builtin will be a command within the shell itself
+/*
+** Execute and run the parsed command
+** seperate processes and builtins
+** a process will imply a child a process being split from its parent
+** and then running seperately
+** a builtin will be a command within the shell itself
+*/

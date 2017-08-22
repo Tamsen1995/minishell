@@ -1,0 +1,11 @@
+Implement the path variable
+    implies the splitting of the PATH variable
+    then scanning every path in that variable for
+    the sought after executable
+    then executing that executable
+
+Refactor
+    Put/copy the envv variable into the shell to make the code cleaner
+
+pair every malloc with a free
+    I have prepared plenty of TODOs for this
