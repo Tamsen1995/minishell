@@ -14,7 +14,7 @@ int         sh_launch(char **envv, t_shell *shell)
     // fork program and save the return
     command = shell->args[0];
     pid = fork();
-    if (check_bin_cmd(shell->args[0]) == TRUE) // TODO change this so
+    if (check_bin_cmd(shell) == TRUE)
         command = ft_strjoin(BIN, shell->args[0]); // TODO free binary string command
     if (pid == 0)
     {
