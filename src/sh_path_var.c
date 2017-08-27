@@ -1,5 +1,35 @@
 #include "../includes/ft_sh.h"
 
+/*
+** receives a directory path
+** and checks the directory for
+** sought after filename
+*/
+
+T_BOOL        check_directory(char *dir_path, char *file)
+{
+    DIR             *dir;
+    struct dirent   *ent;
+    //char *bin;
+
+    dir = NULL;
+    ent = NULL;
+    dir = opendir(dir_path);
+
+    if (!dir_path || !file)
+        fatal("Error in (check_directory)"); // remove later
+
+    while ((ent = readdir(dir)))
+    {
+        if (ft_strcmp(ent->d_name, file) == 0)
+        {
+            closedir(dir);
+            return (TRUE);
+        }
+    }
+    closedir(dir);
+    return (FALSE);
+}
 
 /*
 ** takes in the value of the PATH variable
@@ -16,13 +46,12 @@ void        check_path_binaries(t_shell *shell)
     bin_dirs = NULL;
     // split the PATH variable
     bin_dirs = ft_strsplit(shell->path_var, ':');
-    while (bin_dirs[i])
-    {
-        // open each folder in it
+    while (bin_dirs[i] && \
+    check_directory(bin_dirs[i], shell->args[0]) == FALSE)
         i++;
-    }
  
-
+    // bin_dirs[i] is the folder in which the sought after
+        // binary is in
     
     // iterate over all binaries in each one of them
 

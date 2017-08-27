@@ -4,7 +4,7 @@
 void fatal(char *err_msg)
 {
     ft_putendl(err_msg);
-    //exit (-1);
+    exit (-1);
 }
 
 // TODO implement all the builtins

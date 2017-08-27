@@ -25,6 +25,5 @@ T_BOOL      check_bin_cmd(t_shell *shell)
 
 
 
-    ft_putendl(potential_cmd); // TESTING
     return (FALSE);
 }
