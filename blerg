@@ -1,3 +1,4 @@
 git add -A
-git commit -m "[UPD] Need to refactor ft_strsplit logic because it's really messy and hacky"
-git push origin new/strsplit
+git commit -m "[UPD] The general structure of the shell is now complete. 
+Next up is the proper handling of the memory and then proper testing"
+git push origin path/var

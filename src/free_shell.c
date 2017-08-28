@@ -1,19 +1,81 @@
 #include "../includes/ft_sh.h"
 
 /*
-** Takes in the shell and free it and its environment
+** Takes in an env_var and frees it
+*/
+void free_env_var(t_env *env_var)
+{
+    free(env_var->name);
+    env_var->name = NULL;
+    free(env_var->value);
+    env_var->value = NULL;
+    free(env_var);
+    env_var = NULL;
+}
+
+/*
+** Takes in the shell's environment and frees it
+*/
+void        free_env(t_env *env)
+{
+    t_env *tmp;
+    
+    tmp = NULL;
+    tmp = env;
+    if (!env)
+        fatal("Error in (free_env)");
+    while (tmp->next)
+        tmp = tmp->next;
+
+    if (tmp->prev)
+        tmp = tmp->prev;
+    while (tmp->prev)
+    {
+        tmp = tmp->prev;
+        free_env_var(tmp->next);
+    }
+    free_env_var(tmp);
+}
+
+/*
+** frees the argument variables of the shell
+*/
+
+void        free_args(t_shell *shell)
+{
+    int i;
+
+    i = 0;
+    if (!shell)
+        fatal("Error in (free_args)");
+    while (shell->args[i])
+    {
+        free(shell->args[i]);
+        i++;
+    }
+}
+
+
+/*
+** Takes in the shell and frees it
 */
 void        free_shell(t_shell *shell)
 {
-    t_env *tmp_env;
-
-    tmp_env = shell->env;
     if (!shell)
         fatal("No shell to be freed in (free_shell)");
-    // freeing the environment
-    while (tmp_env->next)
+    if (shell->env)
+        free_env(shell->env);
+    if (shell->args)
+        free_args(shell);
+    if (shell->path_var)
     {
-        ft_putendl(tmp_env->name);
-        tmp_env = tmp_env->next;
+        free(shell->path_var);
+        shell->path_var = NULL;
     }
+    if (shell->bin_dir)
+    {
+        free(shell->bin_dir);
+        shell->bin_dir = NULL;
+    }
+    // More might be implemented later as we add more variables onto the shell
 }
