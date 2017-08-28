@@ -59,6 +59,7 @@ void        free_args(t_shell *shell)
 /*
 ** Takes in the shell and frees it
 */
+
 void        free_shell(t_shell *shell)
 {
     if (!shell)

@@ -1,4 +1,4 @@
 git add -A
-git commit -m "[UPD] The general structure of the shell is now complete. 
-Next up is the proper handling of the memory and then proper testing"
+git commit -m "[UPD] There was a small error in the free_twod_arr function, 
+as it freed the individual pointers but not the pointer to the pointers"
 git push origin proper_freeing

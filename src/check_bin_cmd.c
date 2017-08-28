@@ -51,7 +51,7 @@ T_BOOL      check_bin_cmd(t_shell *shell)
 
     potential_cmd = NULL;
     // potential_cmd = shell->args[0];
-    shell->path_var = get_path_var(shell); // TODO free the path_var
+    get_path_var(shell); // TODO free the path_var
     // This contains the VALUE of the PATH variable
     return(check_path_bin_dirs(shell));
 }

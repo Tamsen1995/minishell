@@ -39,7 +39,7 @@ typedef struct		s_shell
 }					t_shell;
 
 T_BOOL    		    check_directory(char *dir_path, char *file);
-char				*get_path_var(t_shell *shell);
+void				get_path_var(t_shell *shell);
 void    		    free_shell(t_shell *shell);
 int					sh_unsetenv(char **args, t_shell *shell);
 void				ft_putenv(t_env **begin_list, char *name, char *value);
