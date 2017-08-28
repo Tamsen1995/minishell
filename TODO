@@ -1,0 +1,5 @@
+
+> Refactor
+> pair every malloc with a free
+    go over code again to see if everything was properly freed
+    valgrind through the correction
