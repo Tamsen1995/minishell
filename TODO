@@ -1,13 +1,3 @@
-> Implement the path variable
-    implies the splitting of the PATH variable
-    then scanning every path in that variable for
-    the sought after executable
-    then executing that executable
-
-> Optimize PATH variable handling
-    Right now the general logic and idea is there
-    However I need to clean up the code and re-implement a more modular version of 
-    the PATH variable handling
 
 > Refactor
     Put/copy the envv variable into the shell to make the code cleaner

@@ -1,9 +1,34 @@
 #include "../includes/ft_sh.h"
 
 /*
+** Receives the directory in which the binary is in
+** and concatenates it with the binary's name
+** to make a path to be executed by execve
+*/
+
+char        *make_bin_cmd(t_shell *shell)
+{
+    char *command;
+    int len_cmd;
+
+    command = NULL;
+    len_cmd = 0;
+    if (!shell || !shell->bin_dir || !shell->args[0])
+        fatal("Error in (make_bin_cmd)");
+    len_cmd = ft_strlen(shell->bin_dir) + 1;
+    len_cmd = len_cmd + ft_strlen(shell->args[0]);
+    command = ft_strnew(len_cmd);
+    command = ft_strcat(command, shell->bin_dir);
+    command = ft_strcat(command, "/");
+    command = ft_strcat(command, shell->args[0]);
+    return (command);
+}
+
+/*
 ** if the pid is a zero, we assume it to be
 ** the child process
 */
+
 int         sh_launch(char **envv, t_shell *shell)
 {
     pid_t pid;
@@ -12,10 +37,11 @@ int         sh_launch(char **envv, t_shell *shell)
     char *command;
 
     // fork program and save the return
-    command = shell->args[0];
+    command = NULL;
     pid = fork();
     if (check_bin_cmd(shell) == TRUE)
     {
+        command = make_bin_cmd(shell);
         // TODO concatenate the bin path with the first argument
     }
     if (pid == 0)

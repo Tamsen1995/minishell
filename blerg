@@ -1,6 +1,4 @@
 git add -A
-git commit -m "[UPD] The shell now checks for every binary 
-in within the folders of the PATH variable in order to discern 
-whether the sought after variable is within any of these. If so it will indicate so. Next up is 
-the implementation of the command's proper execution"
+git commit -m "[UPD] The general structure of the shell is not complete. 
+Next up is the proper handling of the memory and then proper testing"
 git push origin path/var
