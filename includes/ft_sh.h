@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include "../includes/libft.h"
+#include "../includes/ft_ls.h"
 
 
 # define BUFF_SIZE 8
@@ -30,20 +31,26 @@ typedef struct		s_env
 typedef struct		s_shell
 {
 	int				argc; // Amount of arguments passed into my shell
+	char			**args;
 	struct s_env	*env; // The environment variables
+	char			*path_var; // The value of PATH
+	char			*bin_dir;
 	// Add more data variables later
 }					t_shell;
 
+T_BOOL    		    check_directory(char *dir_path, char *file);
+char				*get_path_var(t_shell *shell);
+void    		    free_shell(t_shell *shell);
 int					sh_unsetenv(char **args, t_shell *shell);
 void				ft_putenv(t_env **begin_list, char *name, char *value);
-T_BOOL  		    check_bin_cmd(char *potential_cmd);
+T_BOOL  		    check_bin_cmd(t_shell *shell);
 int      			sh_env(t_shell *shell);
 int   				sh_setenv(char **args, t_shell *shell);
 t_env   		    *init_env(char **envv);
 void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
-int					sh_execute(char **args, char **envv, t_shell *shell);
-int					sh_launch(char **args, char **envv);
+int					sh_execute(char **envv, t_shell *shell);
+int					sh_launch(char **envv, t_shell *shell);
 int					sh_cd(char **args, t_shell *shell);
 int					sh_exit(void);
 int					sh_echo(char **args);

@@ -5,15 +5,19 @@ NAME = minishell
 SRC = src/main.c \
 	src/get_next_line.c \
 	src/sh_execute.c \
+	src/sh_launch.c \
+	src/sh_path_var.c \
 	src/init_env.c \
 	src/init_shell.c \
 	src/check_bin_cmd.c \
+	src/free_shell.c \
 	src/builtins/builtin_env.c \
 	src/builtins/builtin_exit.c \
 	src/builtins/builtin_echo.c \
 	src/builtins/builtin_setenv.c \
 	src/builtins/builtin_cd.c \
 	src/builtins/builtin_unsetenv.c \
+	src/helpers/check_directory.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 
