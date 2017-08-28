@@ -15,21 +15,21 @@
 static int		ft_count_words(char const *s, char c)
 {
 	int		i;
-	int		len;
+	int		amt;
 
 
 	if(!s || !c)
 		return (0);
 
 	i = 0;
-	len = 0;
+	amt = 0;
 	while (s[i])
 	{
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
-			len++;
+			amt++;
 		i++;
 	}
-	return (len);
+	return (amt);
 }
 
 static char		**ft_line_creator(const char *s, char **arr, char c, int amts)

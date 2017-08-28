@@ -1,3 +1,4 @@
 git add -A
-git commit -m "[UPD] Going to make sure to free all the memory now"
-git push origin free/memory
+git commit -m "[UPD] The general structure of the shell is now complete. 
+Next up is the proper handling of the memory and then proper testing"
+git push origin path/var
