@@ -25,7 +25,12 @@ T_BOOL        check_path_bin_dirs(t_shell *shell)
     {
         if (check_directory(bin_dirs[i], shell->args[0]) == TRUE)
         {
-            shell->bin_dir = ft_strdup(bin_dirs[i]); // TODO free bin_dir whenever it changes
+            if (shell->bin_dir) // Whenever the bin_dir has already been allocated I have to free it before re-assigning it
+            {
+                free(shell->bin_dir);
+                shell->bin_dir = NULL;
+            }
+            shell->bin_dir = ft_strdup(bin_dirs[i]);
             return (TRUE);
         }
         i++;
