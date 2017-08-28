@@ -1,6 +1,5 @@
 
 > Refactor
-    Put/copy the envv variable into the shell to make the code cleaner
-
 > pair every malloc with a free
-    I have prepared plenty of TODOs for this
+    go over code again to see if everything was properly freed
+    valgrind through the correction
