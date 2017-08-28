@@ -34,10 +34,11 @@ typedef struct		s_shell
 	char			**args;
 	struct s_env	*env; // The environment variables
 	char			*path_var; // The value of PATH
+	char			*bin_dir;
 	// Add more data variables later
 }					t_shell;
 
-void				check_path_binaries(t_shell *shell);
+T_BOOL    		    check_directory(char *dir_path, char *file);
 char				*get_path_var(t_shell *shell);
 void    		    free_shell(t_shell *shell);
 int					sh_unsetenv(char **args, t_shell *shell);

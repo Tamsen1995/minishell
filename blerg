@@ -1,3 +1,6 @@
 git add -A
-git commit -m "[UPD] implemented the extracting of the path variable."
+git commit -m "[UPD] The shell now checks for every binary 
+in within the folders of the PATH variable in order to discern 
+whether the sought after variable is within any of these. If so it will indicate so. Next up is 
+the implementation of the command's proper execution"
 git push origin path/var
