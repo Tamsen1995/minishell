@@ -1,9 +1,6 @@
-
-
-
-> Re-do echo command so it takes EVERYTHING after it instead of just the first string
-
 > implement an error message for commands which do not exist
+
+> Figure out how to implement the -n in echo
 
 > Refactor
 > pair every malloc with a free
