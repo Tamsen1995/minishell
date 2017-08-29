@@ -97,8 +97,12 @@ T_BOOL      check_bin_path(t_shell *shell)
     while (bin_dirs[i])
     {
         if (check_dir_paths(bin_dirs[i], shell->args[0]) == TRUE)
+        {
+            free_twod_arr(bin_dirs);
             return (TRUE);
+        }
         i++;
     }
+    free_twod_arr(bin_dirs);
     return (FALSE);
 }
