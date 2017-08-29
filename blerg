@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[UPD] I am freeing a pointer I'm not supposed to somewhere"
-git push origin bin_cmd_path
+git commit -m "[FIX] Fixed the improper freeing of the environment"
+git push origin proper_freeing

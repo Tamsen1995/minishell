@@ -1,7 +1,9 @@
 
-> There is a pointer that isn't supposed to be freed
-    when launching the shell entering /bin/ls and then exit
-    FIND IT
+
+
+> Re-do echo command so it takes EVERYTHING after it instead of just the first string
+
+> implement an error message for commands which do not exist
 
 > Refactor
 > pair every malloc with a free
