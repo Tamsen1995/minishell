@@ -40,10 +40,9 @@ int         sh_launch(char **envv, t_shell *shell)
     command = NULL;
     pid = fork();
     if (check_bin_cmd(shell) == TRUE)
-    {
-        command = make_bin_cmd(shell);
-        // TODO concatenate the bin path with the first argument
-    }
+        command = make_bin_cmd(shell); // TODO free the commane
+    else if (check_bin_path(shell) == TRUE)
+        command = ft_strdup();
     if (pid == 0)
     {
         // executing the sought after program
