@@ -24,6 +24,25 @@ char        *make_bin_cmd(t_shell *shell)
     return (command);
 }
 
+
+/*
+** simply a function which exists if the typed in 
+** command hasn't
+** been found
+*/
+
+void        cmd_not_found(t_shell *shell)
+{
+    char *command;
+
+    command = NULL;
+    if (!shell || !shell->args[0])
+        fatal("Error in (cmd_not_found");
+    ft_putstr("tamshell: command not found: ");
+    ft_putendl(shell->args[0]);
+    exit(-1);
+}
+
 /*
 ** if the pid is a zero, we assume it to be
 ** the child process
@@ -47,7 +66,7 @@ int         sh_launch(char **envv, t_shell *shell)
     {
         // executing the sought after program
         if (execve(command, shell->args, envv) == -1) // Change to execve later
-            fatal("ERROR in child process (sh_launch)");
+            cmd_not_found(shell);
     }
     else if (pid < 0)
         fatal("sh_launch ERR:002");
