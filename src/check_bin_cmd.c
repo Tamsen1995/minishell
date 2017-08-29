@@ -1,7 +1,5 @@
 #include "../includes/ft_sh.h"
 
-
-
 /*
 ** takes in the value of the PATH variable
 ** and iterates over all the folders contained in it
@@ -9,7 +7,7 @@
 ** if there returns true
 */
 
-T_BOOL        check_path_bin_dirs(t_shell *shell)
+T_BOOL        check_bin_dirs(t_shell *shell)
 {
     char **bin_dirs;
     int i;
@@ -53,5 +51,5 @@ T_BOOL      check_bin_cmd(t_shell *shell)
     // potential_cmd = shell->args[0];
     get_path_var(shell); // TODO free the path_var
     // This contains the VALUE of the PATH variable
-    return(check_path_bin_dirs(shell));
+    return(check_bin_dirs(shell));
 }
