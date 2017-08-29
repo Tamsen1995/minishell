@@ -65,11 +65,8 @@ void        free_shell(t_shell *shell)
         free_env(shell->env);
     if (shell->args != NULL)
         free_args(shell);
-    if (shell->path_var != NULL)
-    {
-        free(shell->path_var);
-        shell->path_var = NULL;
-    }
+    if (shell->path_var)
+        ft_strfree(shell->path_var);
     if (shell->bin_dir != NULL)
     {
         free(shell->bin_dir);
