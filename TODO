@@ -1,7 +1,9 @@
+> figure out how to free everything properly when the programs has to exit early
 
 > Figure out how to implement the -n in echo
 
 > Refactor
+
 > pair every malloc with a free
     go over code again to see if everything was properly freed
     valgrind through the correction

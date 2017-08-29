@@ -66,7 +66,11 @@ int         sh_launch(char **envv, t_shell *shell)
     {
         // executing the sought after program
         if (execve(command, shell->args, envv) == -1) // Change to execve later
-            cmd_not_found(shell);
+        {
+            ft_strfree(command);
+            cmd_not_found(shell); // TODO I might have to go free the shell here
+        }
+        
     }
     else if (pid < 0)
         fatal("sh_launch ERR:002");
