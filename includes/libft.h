@@ -104,6 +104,7 @@ typedef struct		 s_stack
 }					t_stack;
 
 
+void				ft_strfree(char *string);
 void				ft_putstr_col(t_stack *file);
 void				ft_putendl_col(t_stack *file);
 void                free_twod_arr(char **arr);
