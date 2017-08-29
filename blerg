@@ -1,4 +1,3 @@
 git add -A
-git commit -m "[ADD] when you enter a path for a binary command it doesn't work yet.
-I am freeing a pointer I'm not supposed to somewhere"
+git commit -m "[UPD] I am freeing a pointer I'm not supposed to somewhere"
 git push origin bin_cmd_path

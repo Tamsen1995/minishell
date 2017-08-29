@@ -3,8 +3,6 @@
     when launching the shell entering /bin/ls and then exit
     FIND IT
 
-> imeplemnt the recognition and execution of binary command paths
-
 > Refactor
 > pair every malloc with a free
     go over code again to see if everything was properly freed
