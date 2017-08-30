@@ -40,6 +40,7 @@ void        cmd_not_found(t_shell *shell)
         fatal("Error in (cmd_not_found");
     ft_putstr("tamshell: command not found: ");
     ft_putendl(shell->args[0]);
+    free_shell(shell);
     exit(-1);
 }
 
@@ -64,13 +65,8 @@ int         sh_launch(char **envv, t_shell *shell)
         command = ft_strdup(shell->args[0]); // TODO free the command
     if (pid == 0)
     {
-        // executing the sought after program
-        if (execve(command, shell->args, envv) == -1) // Change to execve later
-        {
-            ft_strfree(command);
-            cmd_not_found(shell); // TODO I might have to go free the shell here
-        }
-        
+        if (execve(command, shell->args, envv) == -1)
+            cmd_not_found(shell);
     }
     else if (pid < 0)
         fatal("sh_launch ERR:002");
@@ -83,6 +79,7 @@ int         sh_launch(char **envv, t_shell *shell)
         while (!WIFEXITED(status) && !WIFSIGNALED(status))
             wpid = waitpid(pid, &status, WUNTRACED);
     }
+    ft_strfree(command);
     return (1);
 }
 

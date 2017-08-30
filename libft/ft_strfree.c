@@ -3,15 +3,13 @@
 /*
 ** Takes in a string and then frees it
 ** points it to NULL after
+** if the string is NULL it does nothing
 */
 
 void        ft_strfree(char *string)
 {
     if (!string)
-    {
-        ft_putendl("No string to be freed in (ft_strfree)");
-        exit(-1);
-    }
+        return ;
     free(string);
     string = NULL;
 }

@@ -52,7 +52,6 @@ void        free_args(t_shell *shell)
     }
 }
 
-
 /*
 ** Takes in the shell and frees it
 */

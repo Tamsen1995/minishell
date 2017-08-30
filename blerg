@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[UPD] implemented the error message in case there is an unknown command"
+git commit -m "[UPD] porperly freed the command in the sh_launch"
 git push origin proper_freeing
