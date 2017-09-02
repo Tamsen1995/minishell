@@ -1,5 +1,6 @@
 #ifndef FT_LS_H
 # define FT_LS_H
+# define BUF_SIZE 1024
 
 # include				"../includes/libft.h"
 # include				<dirent.h>

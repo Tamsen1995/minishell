@@ -7,3 +7,7 @@
 > pair every malloc with a free
     go over code again to see if everything was properly freed
     valgrind through the correction
+
+> Fix setenv so instead of just setting a new variable
+    it will check the existing envvs and CHANGE a variable
+    if it already exsists
