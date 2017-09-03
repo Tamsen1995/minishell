@@ -28,6 +28,9 @@ char *get_env_var(t_shell *shell, char *name)
 }
 
 
+
+
+
 /*
 ** goes to the parent folder and 
 ** shows its path
@@ -38,23 +41,22 @@ void        precede_nd_show(t_shell *shell)
 {
     char cwd[BUF_SIZE];
     char *old_pwd;
+    char **new_oldpwd;
 
     old_pwd = NULL;
     if (getcwd(cwd, sizeof(cwd)) == NULL)
-    {
+    {   // getting the path of the cwd
         ft_putendl(strerror(errno));
         fatal("Expand buf size in (precede_nd_show)");
     }
+    new_oldpwd = ft_twod_new(3);
+    new_oldpwd[1] = ft_strdup("OLDPWD");
+    new_oldpwd[2] = ft_strdup(cwd); // Making an array with the new oldpwd in 
+    // to change the variable in the env
     old_pwd = get_env_var(shell, "OLDPWD"); 
-    chdir(old_pwd);
-
-        // getting the path of the cwd
-        // then going back to the parent directory which is OLDPWD
-
-    // change to oldpwd
-    // change the oldpwd env variable
-    //
-
+    chdir(old_pwd); // Going back to the parent directory which is OLDPWD
+    change_env_var(new_oldpwd, shell); // changing the oldpwd
+    ft_putendl(old_pwd);
 }
 
 /*

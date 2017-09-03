@@ -103,7 +103,7 @@ typedef struct		 s_stack
 	struct s_stack 	*prev;
 }					t_stack;
 
-
+char				**ft_twod_new(int amt);
 void				ft_strfree(char *string);
 void				ft_putstr_col(t_stack *file);
 void				ft_putendl_col(t_stack *file);

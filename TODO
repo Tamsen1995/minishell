@@ -1,19 +1,17 @@
 > figure out how to free everything properly when the programs has to exit early
 
-> Figure out how to implement the -n in echo
-
 > Refactor
 
 > pair every malloc with a free
     go over code again to see if everything was properly freed
     valgrind through the correction
 
-> Fix setenv so instead of just setting a new variable
-    it will check the existing envvs and CHANGE a variable
-    if it already exsists
+>setenv
 
     thoroughly re-test
 
+    Make sure to check the parameters before executing the necessary actions
+    for instance if a value is missing the behvaior is unknown 
+
 > finish the fixing of the cd -
-    it has to not only change to the OLDPWD but also reset the OLDPWD
-    to whatever the current working directory is in case the user wants to use cd - again.
+    Figure out how to make it show ~ instead of /user/user

@@ -38,7 +38,7 @@ typedef struct		s_shell
 	// Add more data variables later
 }					t_shell;
 
-
+void				change_env_var(char **args, t_shell *shell);
 T_BOOL				check_bin_path(t_shell *shell);
 T_BOOL    		    check_directory(char *dir_path, char *file);
 void				get_path_var(t_shell *shell);
