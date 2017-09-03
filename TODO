@@ -6,7 +6,7 @@
     go over code again to see if everything was properly freed
     valgrind through the correction
 
->setenv
+> setenv
 
     thoroughly re-test
 
@@ -15,3 +15,5 @@
 
 > finish the fixing of the cd -
     Figure out how to make it show ~ instead of /user/user
+
+> figure out the memory leak in the shell->args, strsplit in sh_loop

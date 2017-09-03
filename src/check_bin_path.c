@@ -92,7 +92,6 @@ T_BOOL      check_bin_path(t_shell *shell)
     if (!shell || !shell->args[0])
         fatal("Error in (check_bin_path)");
     // get the path variable
-    ft_strfree(shell->path_var);
     get_path_var(shell);
     bin_dirs = ft_strsplit(shell->path_var, ':');
     while (bin_dirs[i])
@@ -105,5 +104,6 @@ T_BOOL      check_bin_path(t_shell *shell)
         i++;
     }
     free_twod_arr(bin_dirs);
+    ft_strfree(shell->path_var);
     return (FALSE);
 }

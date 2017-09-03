@@ -40,6 +40,7 @@ void        cmd_not_found(t_shell *shell)
         fatal("Error in (cmd_not_found");
     ft_putstr("tamshell: command not found: ");
     ft_putendl(shell->args[0]);
+    free_twod_arr(shell->args);
     free_shell(shell);
     exit(-1);
 }

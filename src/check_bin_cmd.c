@@ -30,6 +30,7 @@ T_BOOL        check_bin_dirs(t_shell *shell)
         i++;
     }
     free_twod_arr(bin_dirs);
+    ft_strfree(shell->path_var);
     return (FALSE);
 }
 
@@ -42,11 +43,16 @@ T_BOOL        check_bin_dirs(t_shell *shell)
 
 T_BOOL      check_bin_cmd(t_shell *shell)
 {
-    char *potential_cmd;
+    char        *potential_cmd;
+    T_BOOL      bin_cmd_present;
 
     potential_cmd = NULL;
+    bin_cmd_present = FALSE;
+
     // potential_cmd = shell->args[0];
     get_path_var(shell); // TODO free the path_var
     // This contains the VALUE of the PATH variable
-    return(check_bin_dirs(shell));
+    bin_cmd_present = check_bin_dirs(shell);
+    ft_strfree(shell->path_var);
+    return(bin_cmd_present);
 }
