@@ -30,7 +30,6 @@ T_BOOL        check_bin_dirs(t_shell *shell)
         i++;
     }
     free_twod_arr(bin_dirs);
-    ft_strfree(shell->path_var);
     return (FALSE);
 }
 

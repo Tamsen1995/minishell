@@ -28,9 +28,6 @@ char *get_env_var(t_shell *shell, char *name)
 }
 
 
-
-
-
 /*
 ** goes to the parent folder and 
 ** shows its path
@@ -69,27 +66,22 @@ int         sh_cd(char **args, t_shell *shell)
 
     home_path = NULL;
     home_path = get_env_var(shell, "HOME");
-
-
-    // check the argument array in and discern wether anything 
-    // else in the arguments array is folder path or not
-    if (ft_strcmp(args[1], "-") == 0)
+    if (args[1] == NULL)
+    {
+        if (chdir(home_path) != 0)
+            fatal("Error in (sh_cd)");
+    }
+    else if (ft_strcmp(args[1], "-") == 0)
         precede_nd_show(shell);
-
-
-    /*
-        if (args[1] == NULL)
+    else
+    {
+        if (chdir(args[1]) != 0)
         {
-            if (chdir(home_path) != 0)
-                fatal("Error in (sh_cd)");
+            ft_putstr("My cd: No such file or directory: ");
+            ft_putendl(args[1]);
+            return (1);
         }
-        else
-        {
-            if (chdir(args[1]) != 0)
-                fatal("Error in (sh_cd)");
-        }
-    */
-
+    }
     free(home_path);
     home_path = NULL;
     return (1);
