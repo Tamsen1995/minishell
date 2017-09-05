@@ -62,10 +62,6 @@ void        free_shell(t_shell *shell)
         fatal("No shell to be freed in (free_shell)");
     if (shell->env != NULL)
         free_env(shell->env);
-    if (shell->args != NULL)
-        free_args(shell);
-    if (shell->path_var != NULL)
-        ft_strfree(shell->path_var);
     if (shell->bin_dir != NULL)
         ft_strfree(shell->bin_dir);
     free(shell);
