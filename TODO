@@ -1,15 +1,16 @@
-> figure out how to free everything properly when the programs has to exit early
+> Whenever a binary of a builtin is executed with its path (/user/bin/exec)
+    I need to redirect this into the builtins of my own shell. So say
+    the user is trying to use /usr/bin/env instead of just env. 
+    I need to redirect into my builtin env
 
 > Refactor
+    change_env_var
 
 > pair every malloc with a free
     go over code again to see if everything was properly freed
     valgrind through the correction
 
 > setenv
-
-    thoroughly re-test
-
     Make sure to check the parameters before executing the necessary actions
     for instance if a value is missing the behvaior is unknown 
 
@@ -17,3 +18,4 @@
     Figure out how to make it show ~ instead of /user/user
 
 > figure out the memory leak in the shell->args, strsplit in sh_loop
+
