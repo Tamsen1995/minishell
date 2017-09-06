@@ -1,3 +1,4 @@
 git add -A
-git commit -m "[TODO]"
+git commit -m "[UPD] It is now recognized when there is a path of a builtin, 
+but I still have to redirect it to the appropiate builtin instead of the binary of the system."
 git push origin redirect_builtin_binaries

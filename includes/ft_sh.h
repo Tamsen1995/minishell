@@ -34,10 +34,14 @@ typedef struct		s_shell
 	char			**args;
 	struct s_env	*env; // The environment variables
 	char			*path_var; // The value of PATH
-	char			*bin_dir;
+	char			*bin_dir; // the binary folder in which the sought after CURRENT command is
 	// Add more data variables later
 }					t_shell;
 
+
+T_BOOL				check_builtin_path(t_shell *shell);
+int					exec_builtin(t_shell *shell);
+T_BOOL				check_builtins(t_shell *shell);
 void				change_env_var(char **args, t_shell *shell);
 T_BOOL				check_bin_path(t_shell *shell);
 T_BOOL    		    check_directory(char *dir_path, char *file);
@@ -49,7 +53,6 @@ T_BOOL  		    check_bin_cmd(t_shell *shell);
 int      			sh_env(t_shell *shell);
 int   				sh_setenv(char **args, t_shell *shell);
 t_env   		    *init_env(char **envv);
-void 				fatal(char *err_msg);
 int					get_next_line(int const fd, char **line);
 int					sh_execute(char **envv, t_shell *shell);
 int					sh_launch(char **envv, t_shell *shell);
