@@ -53,7 +53,7 @@ int     sh_setenv(char **args, t_shell *shell)
         ft_putendl("minishell: Too many arguments");
         return (1);
     } 
-    while (tmp_env && ft_strcmp(tmp_env->name, args[1]) != 0)
+    while (tmp_env->next && ft_strcmp(tmp_env->name, args[1]) != 0)
         tmp_env = tmp_env->next;
     if (ft_strcmp(tmp_env->name, args[1]) == 0)
         change_env_var(args, shell);

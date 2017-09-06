@@ -13,7 +13,3 @@
     if it already exsists
 
     thoroughly re-test
-
-> finish the fixing of the cd -
-    it has to not only change to the OLDPWD but also reset the OLDPWD
-    to whatever the current working directory is in case the user wants to use cd - again.
