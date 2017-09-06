@@ -1,3 +1,3 @@
 git add -A
-git commit -m "[FIX] There is a segfault in the sh_setenv builtin"
-git push origin fix_setenv
+git commit -m "[UPD] Fixed the segfault in setenv"
+git push origin proper_freeing

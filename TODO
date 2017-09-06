@@ -17,5 +17,3 @@
     Figure out how to make it show ~ instead of /user/user
 
 > figure out the memory leak in the shell->args, strsplit in sh_loop
-
-> FIX THE SEGFAULT IN SETENV
