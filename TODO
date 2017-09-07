@@ -1,6 +1,4 @@
 
-> Refactor
-    change_env_var
 
 > pair every malloc with a free
     go over code again to see if everything was properly freed

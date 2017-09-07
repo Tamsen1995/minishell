@@ -14,9 +14,14 @@ void        get_path_var(t_shell *shell)
     if (!shell || !shell->env)
         fatal("Error in get_path_var");
     env_tmp = shell->env;
-    while (ft_strcmp("PATH", env_tmp->name) != 0 && env_tmp)
+    while (env_tmp->next && ft_strcmp("PATH", env_tmp->name) != 0)
+    {
         env_tmp = env_tmp->next;
-    shell->path_var = ft_strdup(env_tmp->value);
+    }
+    if (ft_strcmp("PATH", env_tmp->name) == 0)
+        shell->path_var = ft_strdup(env_tmp->value);
+    else
+        shell->path_var = NULL;
     return ;
     // The value of the PATH var
 }

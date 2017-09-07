@@ -15,7 +15,7 @@ T_BOOL        check_bin_dirs(t_shell *shell)
     i = 0;
     bin_dirs = NULL;
     if (!shell || !shell->path_var)
-        fatal("Error in (check_path_bin_dirs)");
+        return (FALSE);
     bin_dirs = ft_strsplit(shell->path_var, ':');
     while (bin_dirs[i])
     {
@@ -49,7 +49,7 @@ T_BOOL      check_bin_cmd(t_shell *shell)
     bin_cmd_present = FALSE;
 
     // potential_cmd = shell->args[0];
-    get_path_var(shell); // TODO free the path_var
+    get_path_var(shell);
     // This contains the VALUE of the PATH variable
     bin_cmd_present = check_bin_dirs(shell);
     ft_strfree(shell->path_var);
