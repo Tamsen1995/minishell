@@ -1,5 +1,28 @@
 #include "../../includes/ft_sh.h"
 
+
+/*
+** gets in the potential path of a binary
+** and checks to see if it is the path of a builtin
+*/
+
+T_BOOL      is_builtin_path(t_shell *shell)
+{
+    int i;
+    char **bin_path_split; // the binary path split up
+    T_BOOL ret;
+    
+    i = 0;
+    ret = FALSE;
+    bin_path_split = NULL;
+    bin_path_split = ft_strsplit(shell->args[0], '/');
+    while (bin_path_split[i + 1])
+        i++;
+    ret = check_builtins(bin_path_split[i]);
+    free_twod_arr(bin_path_split);
+    return (ret);
+}
+
 /*
 ** check the given directory (path)
 ** for eventual matches with the given shell argument as well
@@ -20,11 +43,8 @@ T_BOOL      iter_builtin_bin_paths(char *bin_dir, t_shell *shell)
     while ((ent = readdir(dir)))
     {
         file_path = make_file_path(bin_dir, ent->d_name);
-
-        ft_putendl(shell->args[0]); // TESTING
-
         if (ft_strcmp(file_path, shell->args[0]) == 0 &&
-            check_builtins(shell) == TRUE)
+            is_builtin_path(shell) == TRUE)
         {
             closedir(dir);
             ft_strfree(file_path);
@@ -67,21 +87,45 @@ T_BOOL      check_builtin_path(t_shell *shell)
 ** a builtin command
 */
 
-T_BOOL check_builtins(t_shell *shell)
+T_BOOL check_builtins(char *cmd)
 {
-    if (ft_strcmp(shell->args[0], "echo") == 0)
+    if (ft_strcmp(cmd, "echo") == 0)
         return (TRUE);
-    if (ft_strcmp(shell->args[0], "cd") == 0)
+    if (ft_strcmp(cmd, "cd") == 0)
         return (TRUE);
-    if (ft_strcmp(shell->args[0], "setenv") == 0)
+    if (ft_strcmp(cmd, "setenv") == 0)
         return (TRUE);
-    if (ft_strcmp(shell->args[0], "unsetenv") == 0)
+    if (ft_strcmp(cmd, "unsetenv") == 0)
         return (TRUE);
-    if (ft_strcmp(shell->args[0], "env") == 0)
+    if (ft_strcmp(cmd, "env") == 0)
         return (TRUE);
-    if (ft_strcmp(shell->args[0], "exit") == 0)
+    if (ft_strcmp(cmd, "exit") == 0)
         return (TRUE);
     return (FALSE);
+}
+
+/*
+** makes builtin command from the path 
+** of the builtin binary provided
+*/
+
+char        *builtin_cmd_from_path(t_shell *shell)
+{
+    char        **bin_path_split;
+    char        *ret;
+    int         i;
+
+    i = 0;
+    ret = NULL;
+    bin_path_split = NULL;
+    if (!shell || !shell->args[0])
+        fatal("Error in (builtin_cmd_from_path)");
+    bin_path_split = ft_strsplit(shell->args[0], '/');
+    while (bin_path_split[i + 1])
+        i++;
+    ret = ft_strdup(bin_path_split[i]);
+    free_twod_arr(bin_path_split);
+    return (ret);
 }
 
 /*
@@ -92,15 +136,11 @@ T_BOOL check_builtins(t_shell *shell)
 
 int         exec_builtin(t_shell *shell)
 {
-
-
     if (check_builtin_path(shell) == TRUE)
-        // TODO make shell->args[0] the command
-
-
-
-
-    // Just output the command for now
+    {
+        ft_strfree(shell->args[0]);
+        shell->args[0] = builtin_cmd_from_path(shell);
+    }
     if (ft_strcmp(shell->args[0], "echo") == 0)
         return (sh_echo(shell->args));
     if (ft_strcmp(shell->args[0], "cd") == 0)
@@ -114,6 +154,6 @@ int         exec_builtin(t_shell *shell)
     if (ft_strcmp(shell->args[0], "exit") == 0)
         return (sh_exit());
     fatal("Error in exec_builtin: builtin recognized, but flow not properly redirected");
-    ft_strfree(shell->path_var);
+//    ft_strfree(shell->path_var);
     return (0);
 }

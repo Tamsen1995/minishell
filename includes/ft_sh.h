@@ -41,7 +41,7 @@ typedef struct		s_shell
 
 T_BOOL				check_builtin_path(t_shell *shell);
 int					exec_builtin(t_shell *shell);
-T_BOOL				check_builtins(t_shell *shell);
+T_BOOL				check_builtins(char *cmd);
 void				change_env_var(char **args, t_shell *shell);
 T_BOOL				check_bin_path(t_shell *shell);
 T_BOOL    		    check_directory(char *dir_path, char *file);
