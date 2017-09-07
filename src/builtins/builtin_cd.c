@@ -27,6 +27,23 @@ char *get_env_var(t_shell *shell, char *name)
     return (env_var);
 }
 
+/*
+** changes the oldpwd
+*/
+
+void        change_oldpwd(char *cwd, t_shell *shell)
+{
+    t_env *tmp_env;
+
+    if (!cwd || !shell || !shell->env)
+        fatal("Error in change_oldpwd");
+    tmp_env = NULL;
+    tmp_env = shell->env;
+    while (tmp_env && ft_strcmp("OLDPWD", tmp_env->name) != 0)
+        tmp_env = tmp_env->next;
+    ft_strfree(tmp_env->value);
+    tmp_env->value = ft_strdup(cwd);
+}
 
 /*
 ** goes to the parent folder and 
@@ -38,7 +55,6 @@ void        precede_nd_show(t_shell *shell)
 {
     char cwd[BUF_SIZE];
     char *old_pwd;
-    char **new_oldpwd;
 
     old_pwd = NULL;
     if (getcwd(cwd, sizeof(cwd)) == NULL)
@@ -46,14 +62,11 @@ void        precede_nd_show(t_shell *shell)
         ft_putendl(strerror(errno));
         fatal("Expand buf size in (precede_nd_show)");
     }
-    new_oldpwd = ft_twod_new(3);
-    new_oldpwd[1] = ft_strdup("OLDPWD");
-    new_oldpwd[2] = ft_strdup(cwd); // Making an array with the new oldpwd in 
-    // to change the variable in the env
-    old_pwd = get_env_var(shell, "OLDPWD"); 
+    old_pwd = get_env_var(shell, "OLDPWD");
     chdir(old_pwd); // Going back to the parent directory which is OLDPWD
-    change_env_var(new_oldpwd, shell); // changing the oldpwd
+    change_oldpwd(cwd, shell); // changing the oldpwd
     ft_putendl(old_pwd);
+    ft_strfree(old_pwd);
 }
 
 /*

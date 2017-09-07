@@ -60,7 +60,6 @@ SRC = ft_atoi.c \
 	ft_putstr_col.c \
 	free_twod_arr.c \
 	ft_strfree.c \
-	ft_twod_new.c \
 	ft_safe_opendir.c \
 	fatal.c \
 	make_file_path.c \

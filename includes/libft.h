@@ -105,7 +105,6 @@ typedef struct		 s_stack
 
 char				*make_file_path(char *dir_path, char *filename);
 DIR  				*safe_opendir(char *dir_path);
-char				**ft_twod_new(int amt);
 void				ft_strfree(char *string);
 void				ft_putstr_col(t_stack *file);
 void				ft_putendl_col(t_stack *file);
