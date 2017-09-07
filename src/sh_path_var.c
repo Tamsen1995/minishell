@@ -20,5 +20,3 @@ void        get_path_var(t_shell *shell)
     return ;
     // The value of the PATH var
 }
-
-

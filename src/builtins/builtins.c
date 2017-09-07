@@ -78,10 +78,12 @@ T_BOOL      check_builtin_path(t_shell *shell)
         if (iter_builtin_bin_paths(bin_dirs[i], shell))
         {
             free_twod_arr(bin_dirs);
+            ft_strfree(shell->path_var);
             return (TRUE);
         }
         i++;
     }
+    ft_strfree(shell->path_var);
     free_twod_arr(bin_dirs);
     return (FALSE);
 }
@@ -158,6 +160,5 @@ int         exec_builtin(t_shell *shell)
     if (ft_strcmp(shell->args[0], "exit") == 0)
         return (sh_exit());
     fatal("Error in exec_builtin: builtin recognized, but flow not properly redirected");
-//    ft_strfree(shell->path_var);
     return (0);
 }
