@@ -1,7 +1,3 @@
-> Whenever a binary of a builtin is executed with its path (/user/bin/exec)
-    I need to redirect this into the builtins of my own shell. So say
-    the user is trying to use /usr/bin/env instead of just env. 
-    I need to redirect into my builtin env
 
 > Refactor
     change_env_var

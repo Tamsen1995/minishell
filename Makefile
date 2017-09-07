@@ -17,6 +17,7 @@ SRC = src/main.c \
 	src/builtins/builtin_setenv.c \
 	src/builtins/builtin_cd.c \
 	src/builtins/builtin_unsetenv.c \
+	src/builtins/builtins.c \
 	src/helpers/check_directory.c \
 	src/check_bin_path.c \
 

@@ -1,3 +1,5 @@
 git add -A
-git commit -m "[TODO]"
-git push origin proper_freeing
+git commit -m "[UPD] It is now recognized when there is a path of a builtin, 
+in addition to this it no longer executes the binary builtin of the parent shell, 
+but rather redirects the flow to the builtins of my shell."
+git push origin redirect_builtin_binaries
