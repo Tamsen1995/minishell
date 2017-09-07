@@ -76,9 +76,13 @@ T_BOOL      check_builtin_path(t_shell *shell)
     while (bin_dirs[i])
     {
         if (iter_builtin_bin_paths(bin_dirs[i], shell))
+        {
+            free_twod_arr(bin_dirs);
             return (TRUE);
+        }
         i++;
     }
+    free_twod_arr(bin_dirs);
     return (FALSE);
 }
 
