@@ -26,9 +26,6 @@ void        free_env(t_env *env)
         fatal("Error in (free_env)");
     while (tmp->next)
         tmp = tmp->next;
-
-    if (tmp->prev)
-        tmp = tmp->prev;
     while (tmp->prev)
     {
         tmp = tmp->prev;
@@ -55,27 +52,19 @@ void        free_args(t_shell *shell)
     }
 }
 
-
 /*
 ** Takes in the shell and frees it
 */
+
 void        free_shell(t_shell *shell)
 {
     if (!shell)
         fatal("No shell to be freed in (free_shell)");
-    if (shell->env)
+    if (shell->env != NULL)
         free_env(shell->env);
-    if (shell->args)
-        free_args(shell);
-    if (shell->path_var)
-    {
-        free(shell->path_var);
-        shell->path_var = NULL;
-    }
-    if (shell->bin_dir)
-    {
-        free(shell->bin_dir);
-        shell->bin_dir = NULL;
-    }
+    if (shell->bin_dir != NULL)
+        ft_strfree(shell->bin_dir);
+    free(shell);
+    shell = NULL;
     // More might be implemented later as we add more variables onto the shell
 }

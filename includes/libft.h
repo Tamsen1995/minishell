@@ -103,11 +103,12 @@ typedef struct		 s_stack
 	struct s_stack 	*prev;
 }					t_stack;
 
-
+char				*make_file_path(char *dir_path, char *filename);
+DIR  				*safe_opendir(char *dir_path);
+void				ft_strfree(char *string);
 void				ft_putstr_col(t_stack *file);
 void				ft_putendl_col(t_stack *file);
-
-
+void                free_twod_arr(char **arr);
 t_filetype			get_file_type(struct dirent *ent);
 size_t				ft_strlen(char const *s);
 size_t				ft_strlcat(char *dst, char const *src, size_t size);
@@ -175,4 +176,6 @@ char				*ft_split_char(char *s, int i, char c);
 char				**ft_strsplit(const char *s, char c);
 t_stack				*ft_lstnew(struct dirent *ent, char *path, char *flags);
 void				ft_list_push_back(t_stack **alst, struct dirent *ent, char *path, char *flags);
+void 				fatal(char *err_msg);
+
 #endif

@@ -18,7 +18,7 @@ static int		ft_count_words(char const *s, char c)
 	int		amt;
 
 
-	if(!s || !c)
+	if (!s || !c)
 		return (0);
 
 	i = 0;
@@ -56,7 +56,8 @@ static char		**ft_line_creator(const char *s, char **arr, char c, int amts)
 			arr[k] = ft_strsub(s, debut, longeur);
 			k++;
 		}
-		i++;
+		if (s[i])
+			i++;
 	}
 	return (arr);
 }

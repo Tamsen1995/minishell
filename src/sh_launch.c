@@ -24,6 +24,27 @@ char        *make_bin_cmd(t_shell *shell)
     return (command);
 }
 
+
+/*
+** simply a function which exists if the typed in 
+** command hasn't
+** been found
+*/
+
+void        cmd_not_found(t_shell *shell)
+{
+    char *command;
+
+    command = NULL;
+    if (!shell || !shell->args[0])
+        fatal("Error in (cmd_not_found");
+    ft_putstr("tamshell: command not found: ");
+    ft_putendl(shell->args[0]);
+    free_twod_arr(shell->args);
+    free_shell(shell);
+    exit(-1);
+}
+
 /*
 ** if the pid is a zero, we assume it to be
 ** the child process
@@ -40,15 +61,13 @@ int         sh_launch(char **envv, t_shell *shell)
     command = NULL;
     pid = fork();
     if (check_bin_cmd(shell) == TRUE)
-    {
-        command = make_bin_cmd(shell);
-        // TODO concatenate the bin path with the first argument
-    }
+        command = make_bin_cmd(shell); // TODO free the command
+    else if (check_bin_path(shell) == TRUE)
+        command = ft_strdup(shell->args[0]); // TODO free the command
     if (pid == 0)
     {
-        // executing the sought after program
-        if (execve(command, shell->args, envv) == -1) // Change to execve later
-            fatal("ERROR in child process (sh_launch)");
+        if (execve(command, shell->args, envv) == -1)
+            cmd_not_found(shell);
     }
     else if (pid < 0)
         fatal("sh_launch ERR:002");
@@ -61,6 +80,7 @@ int         sh_launch(char **envv, t_shell *shell)
         while (!WIFEXITED(status) && !WIFSIGNALED(status))
             wpid = waitpid(pid, &status, WUNTRACED);
     }
+    ft_strfree(command);
     return (1);
 }
 

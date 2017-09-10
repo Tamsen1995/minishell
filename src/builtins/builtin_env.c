@@ -19,6 +19,8 @@ int        sh_env(t_shell *shell)
         }
         if (env_var->value)
             ft_putendl(env_var->value);
+        else
+            ft_putendl("");
         env_var = env_var->next;
     }
     return (1);

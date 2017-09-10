@@ -1,7 +1,5 @@
 #include "../includes/ft_sh.h"
 
-
-
 /*
 ** takes in the value of the PATH variable
 ** and iterates over all the folders contained in it
@@ -9,32 +7,29 @@
 ** if there returns true
 */
 
-T_BOOL        check_path_bin_dirs(t_shell *shell)
+T_BOOL        check_bin_dirs(t_shell *shell)
 {
     char **bin_dirs;
     int i;
 
-
     i = 0;
     bin_dirs = NULL;
     if (!shell || !shell->path_var)
-        fatal("Error in (check_path_bin_dirs)");
-    // split the PATH variable
+        return (FALSE);
     bin_dirs = ft_strsplit(shell->path_var, ':');
     while (bin_dirs[i])
     {
         if (check_directory(bin_dirs[i], shell->args[0]) == TRUE)
         {
             if (shell->bin_dir) // Whenever the bin_dir has already been allocated I have to free it before re-assigning it
-            {
-                free(shell->bin_dir);
-                shell->bin_dir = NULL;
-            }
+                ft_strfree(shell->bin_dir);
             shell->bin_dir = ft_strdup(bin_dirs[i]);
+            free_twod_arr(bin_dirs);
             return (TRUE);
         }
         i++;
     }
+    free_twod_arr(bin_dirs);
     return (FALSE);
 }
 
@@ -47,11 +42,16 @@ T_BOOL        check_path_bin_dirs(t_shell *shell)
 
 T_BOOL      check_bin_cmd(t_shell *shell)
 {
-    char *potential_cmd;
+    char        *potential_cmd;
+    T_BOOL      bin_cmd_present;
 
     potential_cmd = NULL;
+    bin_cmd_present = FALSE;
+
     // potential_cmd = shell->args[0];
-    shell->path_var = get_path_var(shell); // TODO free the path_var
+    get_path_var(shell);
     // This contains the VALUE of the PATH variable
-    return(check_path_bin_dirs(shell));
+    bin_cmd_present = check_bin_dirs(shell);
+    ft_strfree(shell->path_var);
+    return(bin_cmd_present);
 }

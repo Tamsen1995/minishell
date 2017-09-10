@@ -1,6 +1,5 @@
 #include "../includes/ft_sh.h"
 
-
 int         count_args(char **args)
 {
     int argc;
@@ -61,10 +60,10 @@ void        sh_loop(t_shell *shell, char **envv)
         shell->args = ft_strsplit(line, ' ');
         shell->argc = count_args(shell->args);
         status = sh_execute(envv, shell);
-        free(line);
+        ft_strfree(line);
+        ft_strfree(buf);
         free_twod_arr(shell->args);
     }
-
 }
 
 /*

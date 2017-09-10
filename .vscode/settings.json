@@ -5,6 +5,7 @@
         "get_next_line.c": "cpp",
         "wait.h": "c",
         "ft_sh.h": "c",
-        "_null.h": "c"
+        "_null.h": "c",
+        "ft_ls.h": "c"
     }
 }

@@ -1,22 +1,5 @@
 #include "../includes/ft_sh.h"
 
-// I think this should work
-void        free_twod_arr(char **arr)
-{
-    int i;
-
-    if (!arr)
-    {
-        return ;
-    }
-    i = 0;
-    while (arr[i])
-    {
-        free(arr[i]);
-        i++;
-    }
-}
-
 // allocates a new environment variables list element
 t_env       *ft_new_env(char *name, char *value)
 {
