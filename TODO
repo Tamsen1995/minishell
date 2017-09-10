@@ -1,15 +1,3 @@
 
-
-> pair every malloc with a free
-    go over code again to see if everything was properly freed
-    valgrind through the correction
-
 > setenv
-    Make sure to check the parameters before executing the necessary actions
-    for instance if a value is missing the behvaior is unknown 
-
-> finish the fixing of the cd -
-    Figure out how to make it show ~ instead of /user/user
-
-> figure out the memory leak in the shell->args, strsplit in sh_loop
-
+   if a name but no value is given, then put the value as a newline
