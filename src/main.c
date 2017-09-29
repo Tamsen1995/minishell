@@ -21,7 +21,7 @@ int				count_args(char **args)
 		return (0);
 	while (args[argc])
 		argc++;
-	return (argc); // TODO test this function
+	return (argc);
 }
 
 /*
@@ -109,7 +109,7 @@ int				main(int ac, char **av, char **envv)
 
 	shell = NULL;
 	shell = init_shell(ac, av, envv);
-	sh_loop(shell, envv);  // the programs main loop
+	sh_loop(shell, envv);
 	free_shell(shell);
 	return (0);
 }
