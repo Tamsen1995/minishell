@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_safe_opendir.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/08 17:30:12 by tbui              #+#    #+#             */
+/*   Updated: 2017/12/08 17:31:30 by tbui             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libft.h"
 
 /*
@@ -5,12 +17,12 @@
 ** in case the function fails it safely exits the programs
 */
 
-DIR   *safe_opendir(char *dir_path)
+DIR			*safe_opendir(char *dir_path)
 {
-    DIR *dir;
+	DIR		*dir;
 
-    dir = NULL;
-    if (!(dir = opendir(dir_path)))
-        fatal("Could not open directory in (check_dir_paths)");
-    return (dir);
+	dir = NULL;
+	if (!(dir = opendir(dir_path)))
+		fatal("Could not open directory in (check_dir_paths)");
+	return (dir);
 }
