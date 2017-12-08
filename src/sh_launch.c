@@ -56,6 +56,17 @@ void			cmd_not_found(t_shell *shell)
 	exit(-1);
 }
 
+
+/*
+** Just a safe wrapper for the execve
+** which will indicate if something
+*/
+void		safe_exec(char *command, t_shell *shell, char **envv)
+{
+	if (execve(command, shell->args, envv) == -1)
+		cmd_not_found(shell);
+}
+
 /*
 ** if the pid is a zero, we assume it to be
 ** the child process
