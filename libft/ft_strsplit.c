@@ -6,7 +6,7 @@
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:48 by tbui              #+#    #+#             */
-/*   Updated: 2015/11/30 18:34:48 by tbui             ###   ########.fr       */
+/*   Updated: 2017/12/08 17:42:32 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ static int		ft_count_words(char const *s, char c)
 	int		i;
 	int		amt;
 
-
 	if (!s || !c)
 		return (0);
-
 	i = 0;
 	amt = 0;
 	while (s[i])
