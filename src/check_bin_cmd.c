@@ -6,7 +6,7 @@
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 16:55:06 by tbui              #+#    #+#             */
-/*   Updated: 2017/12/08 16:58:45 by tbui             ###   ########.fr       */
+/*   Updated: 2017/12/08 19:28:56 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ T_BOOL			check_bin_dirs(t_shell *shell)
 	{
 		if (check_directory(bin_dirs[i], shell->args[0]) == TRUE)
 		{
-			if (shell->bin_dir) // Whenever the bin_dir has already been allocated I have to free it before re-assigning it
+			if (shell->bin_dir)
 				ft_strfree(shell->bin_dir);
 			shell->bin_dir = ft_strdup(bin_dirs[i]);
 			free_twod_arr(bin_dirs);
@@ -59,12 +59,8 @@ T_BOOL			check_bin_cmd(t_shell *shell)
 
 	potential_cmd = NULL;
 	bin_cmd_present = FALSE;
-
-	// potential_cmd = shell->args[0];
 	get_path_var(shell);
-	// This contains the VALUE of the PATH variable
 	bin_cmd_present = check_bin_dirs(shell);
 	ft_strfree(shell->path_var);
 	return (bin_cmd_present);
 }
-

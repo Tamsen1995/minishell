@@ -68,6 +68,7 @@ void		free_args(t_shell *shell)
 
 /*
 ** Takes in the shell and frees it
+** implement more
 */
 
 void		free_shell(t_shell *shell)
@@ -80,6 +81,4 @@ void		free_shell(t_shell *shell)
 		ft_strfree(shell->bin_dir);
 	free(shell);
 	shell = NULL;
-	// More might be implemented later as we add more variables onto the shell
 }
-
