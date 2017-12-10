@@ -6,7 +6,7 @@
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/29 14:30:26 by tbui              #+#    #+#             */
-/*   Updated: 2017/09/29 14:32:05 by tbui             ###   ########.fr       */
+/*   Updated: 2017/12/10 10:55:28 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** and checks to see if it is the path of a builtin
 */
 
-T_BOOL		is_builtin_path(t_shell *shell)
+T_BOOL				is_builtin_path(t_shell *shell)
 {
 	int		i;
 	char	**bin_path_split;
@@ -74,7 +74,7 @@ T_BOOL				iter_builtin_bin_paths(char *bin_dir, t_shell *shell)
 ** if there is a match it return true
 */
 
-T_BOOL			check_builtin_path(t_shell *shell)
+T_BOOL				check_builtin_path(t_shell *shell)
 {
 	char	**bin_dirs;
 	int		i;
@@ -105,7 +105,7 @@ T_BOOL			check_builtin_path(t_shell *shell)
 ** a builtin command
 */
 
-T_BOOL			check_builtins(char *cmd)
+T_BOOL				check_builtins(char *cmd)
 {
 	if (ft_strcmp(cmd, "echo") == 0)
 		return (TRUE);
@@ -127,7 +127,7 @@ T_BOOL			check_builtins(char *cmd)
 ** of the builtin binary provided
 */
 
-char			*builtin_cmd_from_path(t_shell *shell)
+char				*builtin_cmd_from_path(t_shell *shell)
 {
 	char		**bin_path_split;
 	char		*ret;
@@ -144,34 +144,4 @@ char			*builtin_cmd_from_path(t_shell *shell)
 	ret = ft_strdup(bin_path_split[i]);
 	free_twod_arr(bin_path_split);
 	return (ret);
-}
-
-/*
-** redirects the flow to the appropiate
-** builtin
-** returns whatever the builtin returns
-*/
-
-int				exec_builtin(t_shell *shell)
-{
-	if (check_builtin_path(shell) == TRUE)
-	{
-		ft_strfree(shell->args[0]);
-		shell->args[0] = builtin_cmd_from_path(shell);
-	}
-	if (ft_strcmp(shell->args[0], "echo") == 0)
-		return (sh_echo(shell->args));
-	if (ft_strcmp(shell->args[0], "cd") == 0)
-		return (sh_cd(shell->args, shell));
-	if (ft_strcmp(shell->args[0], "setenv") == 0)
-		return (sh_setenv(shell->args, shell));
-	if (ft_strcmp(shell->args[0], "unsetenv") == 0)
-		return (sh_unsetenv(shell->args, shell));
-	if (ft_strcmp(shell->args[0], "env") == 0)
-		return (sh_env(shell));
-	if (ft_strcmp(shell->args[0], "exit") == 0)
-		return (sh_exit());
-	fatal("Error in exec_builtin: builtin recognized, \
-			but flow not properly redirected");
-	return (0);
 }
