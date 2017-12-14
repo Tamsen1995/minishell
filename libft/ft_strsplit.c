@@ -6,7 +6,7 @@
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:48 by tbui              #+#    #+#             */
-/*   Updated: 2015/11/30 18:34:48 by tbui             ###   ########.fr       */
+/*   Updated: 2017/12/08 17:42:32 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ static int		ft_count_words(char const *s, char c)
 	int		i;
 	int		amt;
 
-
 	if (!s || !c)
 		return (0);
-
 	i = 0;
 	amt = 0;
 	while (s[i])
@@ -31,6 +29,14 @@ static int		ft_count_words(char const *s, char c)
 	}
 	return (amt);
 }
+
+/*
+** takes in an empty 2d array, the amount of words, the character
+** to by which the string is supposed to be delimited,
+** and the string itself
+** uses this information to fill up the twod array with the
+** split up string
+*/
 
 static char		**ft_line_creator(const char *s, char **arr, char c, int amts)
 {
@@ -43,9 +49,8 @@ static char		**ft_line_creator(const char *s, char **arr, char c, int amts)
 	k = 0;
 	while (s[i])
 	{
-		if (s[i] != c && amts > 0)
+		if (s[i] != c && amts-- > 0)
 		{
-			amts--;
 			debut = i;
 			longeur = 0;
 			while (s[i] != '\0' && s[i] != c)

@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtin_echo.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/29 14:33:48 by tbui              #+#    #+#             */
+/*   Updated: 2017/09/29 14:34:31 by tbui             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh.h"
 
 /*
 ** man echo
 */
 
-int sh_echo(char **args)
+int			sh_echo(char **args)
 {
-    int i;
+	int		i;
 
-    i = 1;
-    while (args[i])
-    {
-        ft_putstr(args[i]);
-        ft_putchar(' ');
-        i++;
-    }
-    ft_putendl("");
-    return (1);
+	i = 1;
+	while (args[i])
+	{
+		ft_putstr(args[i]);
+		ft_putchar(' ');
+		i++;
+	}
+	ft_putendl("");
+	return (1);
 }

@@ -6,16 +6,18 @@
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 22:01:39 by tbui              #+#    #+#             */
-/*   Updated: 2015/11/25 22:01:57 by tbui             ###   ########.fr       */
+/*   Updated: 2017/12/08 18:26:38 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
+/*
+** INVALID overrides everything
+** rev overrides everything in the sense that
+** it cooperates with the given condition
+*/
 
-
-// INVALID overrides everything
-	// rev overrides everything in the sense that it cooperates with the given condition
 int			stack_sorting(t_stack *s1, t_stack *s2, char *flags)
 {
 	time_t s1_time;
@@ -37,11 +39,10 @@ int			stack_sorting(t_stack *s1, t_stack *s2, char *flags)
 	if (flags[f_rev])
 		return (ft_strcmp(s2->filename, s1->filename));
 	return (ft_strcmp(s1->filename, s2->filename));
-
 }
 
-// I need to do the sorting here 
-void		ft_list_push_back(t_stack **begin_list, struct dirent *ent, char *path, char *flags)
+void		ft_list_push_back(t_stack **begin_list, \
+struct dirent *ent, char *path, char *flags)
 {
 	t_stack *cur;
 	t_stack *prev;
@@ -49,7 +50,6 @@ void		ft_list_push_back(t_stack **begin_list, struct dirent *ent, char *path, ch
 
 	new = ft_lstnew(ent, path, flags);
 	cur = NULL;
-	prev = NULL;
 	if (!*begin_list)
 	{
 		*begin_list = ft_lstnew(ent, path, flags);
