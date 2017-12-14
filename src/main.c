@@ -6,7 +6,7 @@
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/29 12:27:42 by tbui              #+#    #+#             */
-/*   Updated: 2017/09/29 12:27:52 by tbui             ###   ########.fr       */
+/*   Updated: 2017/12/14 15:48:34 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int				main(int ac, char **av, char **envv)
 	shell = init_shell(ac, av, envv);
 	sh_loop(shell, envv);
 	free_shell(shell);
+//	while(1);
 	return (0);
 }
 

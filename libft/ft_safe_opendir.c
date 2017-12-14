@@ -22,7 +22,8 @@ DIR			*safe_opendir(char *dir_path)
 	DIR		*dir;
 
 	dir = NULL;
+//	ft_putendl(dir_path); // TESTING
 	if (!(dir = opendir(dir_path)))
-		fatal("Could not open directory in (check_dir_paths)");
+		fatal("Could not open directory in (safe_opendir)");
 	return (dir);
 }
