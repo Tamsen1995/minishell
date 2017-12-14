@@ -30,6 +30,62 @@ t_env			*ft_new_env(char *name, char *value)
 }
 
 /*
+** counts all the indicated charcaters in the given string
+*/
+
+// TODO put in libft
+int				ft_count_chars(char *string, char c)
+{
+	int i;
+	int amt;
+
+	i = 0;
+	amt = 0;
+	while (string[i])
+	{
+		if (string[i] == c)
+			amt++;
+		i++;
+	}
+	return (amt);
+}
+
+/*
+** takes in a string and copies the exact string with the indicated chars into another array
+** returns said array
+
+*/
+
+// TODO put in libft
+char			*ft_remove_char(char *string, char c)
+{
+	char	*ret;
+	int		k; // The amount of the characters which are present in the string
+	int		mem_size;
+	int 	i;
+
+	ret = NULL;
+	k = 0;
+	i = 0;
+	mem_size = ft_strlen(string);
+	if (!string || !c)
+		fatal("Error in (ft_remove_char)");
+	ret = ft_strnew(mem_size);
+	while (string[i])
+	{
+		if (string[i] != c)
+		{
+			ret[k] = string[i];
+			k++;
+		}
+		i++;
+	}
+	ret[k] = '\0';
+	// TODO maybe free string
+	return (ret);
+}
+
+/*
 ** iterates to the end of the env list
 ** and then adds the value to it
 */
@@ -38,7 +94,9 @@ void			ft_putenv(t_env **begin_list, char *name, char *value)
 {
 	t_env		*tmp;
 
+
 	tmp = NULL;
+	value = ft_remove_char(name, '"'); // TODO Function which will get rid of the ""s in every string
 	if (!*begin_list)
 	{
 		*begin_list = ft_new_env(name, value);
