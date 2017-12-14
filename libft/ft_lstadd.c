@@ -50,7 +50,6 @@ struct dirent *ent, char *path, char *flags)
 
 	new = ft_lstnew(ent, path, flags);
 	cur = NULL;
-	prev = NULL;
 	if (!*begin_list)
 	{
 		*begin_list = ft_lstnew(ent, path, flags);

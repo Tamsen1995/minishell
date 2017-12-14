@@ -45,7 +45,7 @@ char			*isolate_date_time(char *temps);
 void			extract_date_time(struct stat buf, t_fields *fields);
 char			*extract_group(struct stat buf);
 char			*extract_owner(struct stat buf);
-void			extract_permissions_mode(struct stat fileStat, t_stack *file);
+void			extract_permissions_mode(struct stat file_stat, t_stack *file);
 t_fields		*alloc_fields(void);
 t_fields		*get_file_info(t_stack *file);
 void			error_msg(char *message);
