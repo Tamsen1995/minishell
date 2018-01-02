@@ -22,20 +22,20 @@ int					exec_builtin(t_shell *shell)
 {
 	if (check_builtin_path(shell) == TRUE)
 	{
-		ft_strfree(shell->args[0]);
-		shell->args[0] = builtin_cmd_from_path(shell);
+		ft_strfree(shell->cmds->args[0]);
+		shell->cmds->args[0] = builtin_cmd_from_path(shell);
 	}
-	if (ft_strcmp(shell->args[0], "echo") == 0)
-		return (sh_echo(shell->args));
-	if (ft_strcmp(shell->args[0], "cd") == 0)
-		return (sh_cd(shell->args, shell));
-	if (ft_strcmp(shell->args[0], "setenv") == 0)
-		return (sh_setenv(shell->args, shell));
-	if (ft_strcmp(shell->args[0], "unsetenv") == 0)
-		return (sh_unsetenv(shell->args, shell));
-	if (ft_strcmp(shell->args[0], "env") == 0)
+	if (ft_strcmp(shell->cmds->args[0], "echo") == 0)
+		return (sh_echo(shell->cmds->args));
+	if (ft_strcmp(shell->cmds->args[0], "cd") == 0)
+		return (sh_cd(shell->cmds->args, shell));
+	if (ft_strcmp(shell->cmds->args[0], "setenv") == 0)
+		return (sh_setenv(shell->cmds->args, shell));
+	if (ft_strcmp(shell->cmds->args[0], "unsetenv") == 0)
+		return (sh_unsetenv(shell->cmds->args, shell));
+	if (ft_strcmp(shell->cmds->args[0], "env") == 0)
 		return (sh_env(shell));
-	if (ft_strcmp(shell->args[0], "exit") == 0)
+	if (ft_strcmp(shell->cmds->args[0], "exit") == 0)
 		return (sh_exit());
 	fatal("Error in exec_builtin: builtin recognized, \
 			but flow not properly redirected");

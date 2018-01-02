@@ -59,9 +59,9 @@ void		free_args(t_shell *shell)
 	i = 0;
 	if (!shell)
 		fatal("Error in (free_args)");
-	while (shell->args[i])
+	while (shell->cmds->args[i])
 	{
-		free(shell->args[i]);
+		free(shell->cmds->args[i]);
 		i++;
 	}
 }

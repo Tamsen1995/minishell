@@ -25,14 +25,14 @@ char			*make_bin_cmd(t_shell *shell)
 
 	command = NULL;
 	len_cmd = 0;
-	if (!shell || !shell->bin_dir || !shell->args[0])
+	if (!shell || !shell->bin_dir || !shell->cmds->args[0])
 		fatal("Error in (make_bin_cmd)");
 	len_cmd = ft_strlen(shell->bin_dir) + 1;
-	len_cmd = len_cmd + ft_strlen(shell->args[0]);
+	len_cmd = len_cmd + ft_strlen(shell->cmds->args[0]);
 	command = ft_strnew(len_cmd);
 	command = ft_strcat(command, shell->bin_dir);
 	command = ft_strcat(command, "/");
-	command = ft_strcat(command, shell->args[0]);
+	command = ft_strcat(command, shell->cmds->args[0]);
 	return (command);
 }
 
@@ -47,11 +47,11 @@ void			cmd_not_found(t_shell *shell)
 	char *command;
 
 	command = NULL;
-	if (!shell || !shell->args[0])
+	if (!shell || !shell->cmds->args[0])
 		fatal("Error in (cmd_not_found");
 	ft_putstr("tamshell: command not found: ");
-	ft_putendl(shell->args[0]);
-	free_twod_arr(shell->args);
+	ft_putendl(shell->cmds->args[0]);
+	free_twod_arr(shell->cmds->args);
 	free_shell(shell);
 	exit(-1);
 }
@@ -63,7 +63,7 @@ void			cmd_not_found(t_shell *shell)
 
 void			safe_exec(char *command, t_shell *shell, char **envv)
 {
-	if (execve(command, shell->args, envv) == -1)
+	if (execve(command, shell->cmds->args, envv) == -1)
 		cmd_not_found(shell);
 }
 
@@ -84,7 +84,7 @@ int				sh_launch(char **envv, t_shell *shell)
 	if (check_bin_cmd(shell) == TRUE)
 		command = make_bin_cmd(shell);
 	else if (check_bin_path(shell) == TRUE)
-		command = ft_strdup(shell->args[0]);
+		command = ft_strdup(shell->cmds->args[0]);
 	if (pid == 0)
 		safe_exec(command, shell, envv);
 	else if (pid < 0)

@@ -26,7 +26,7 @@ T_BOOL				is_builtin_path(t_shell *shell)
 	i = 0;
 	ret = FALSE;
 	bin_path_split = NULL;
-	bin_path_split = ft_strsplit(shell->args[0], '/');
+	bin_path_split = ft_strsplit(shell->cmds->args[0], '/');
 	while (bin_path_split[i + 1])
 		i++;
 	ret = check_builtins(bin_path_split[i]);
@@ -54,7 +54,7 @@ T_BOOL				iter_builtin_bin_paths(char *bin_dir, t_shell *shell)
 	while ((ent = readdir(dir)))
 	{
 		file_path = make_file_path(bin_dir, ent->d_name);
-		if (ft_strcmp(file_path, shell->args[0]) == 0 &&
+		if (ft_strcmp(file_path, shell->cmds->args[0]) == 0 &&
 				is_builtin_path(shell) == TRUE)
 		{
 			closedir(dir);
@@ -136,9 +136,9 @@ char				*builtin_cmd_from_path(t_shell *shell)
 	i = 0;
 	ret = NULL;
 	bin_path_split = NULL;
-	if (!shell || !shell->args[0])
+	if (!shell || !shell->cmds->args[0])
 		fatal("Error in (builtin_cmd_from_path)");
-	bin_path_split = ft_strsplit(shell->args[0], '/');
+	bin_path_split = ft_strsplit(shell->cmds->args[0], '/');
 	while (bin_path_split[i + 1])
 		i++;
 	ret = ft_strdup(bin_path_split[i]);
