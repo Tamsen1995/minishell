@@ -75,12 +75,7 @@ void		free_cmds(t_cmds *cmds)
 		fatal("Error (free_cmds)");
 	tmp = cmds;
 	while (tmp->next)
-	{
-		ft_putendl("\n\n\n\n");
-		ft_putendl(tmp->args[0]);
-		ft_putendl("\n\n\n\n"); // TESTING
 		tmp = tmp->next;
-	}
 	while (tmp->prev)
 	{
 		tmp = tmp->prev;
@@ -104,8 +99,6 @@ void		free_shell(t_shell *shell)
 		free_env(shell->env);
 	if (shell->bin_dir != NULL)
 		ft_strfree(shell->bin_dir);
-	if (shell->cmds)
-		free_cmds(shell->cmds);
 	free(shell);
 	shell = NULL;
 }

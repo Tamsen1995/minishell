@@ -70,12 +70,15 @@ void			sh_loop(t_shell *shell, char **envv)
 		get_next_line(0, &buf);
 		buf = replace_tabs(buf);
 		shell->cmds = store_commands(buf);
+		begin_cmds = shell->cmds;
 		while (shell->cmds)
 		{
 			shell->argc = count_args(shell->cmds->args);
 			status = sh_execute(envv, shell);
 			shell->cmds = shell->cmds->next;
 		}
+		if (begin_cmds)
+			free_cmds(begin_cmds);
 		ft_strfree(buf);
 	}
 }
