@@ -69,9 +69,7 @@ void			sh_loop(t_shell *shell, char **envv)
 		ft_putstr("tamshell$> ");
 		get_next_line(0, &buf);
 		line = replace_tabs(buf);
-
 		shell->cmds = store_commands(line);
-
 		while (shell->cmds)
 		{
 			shell->argc = count_args(shell->cmds->args);
@@ -81,7 +79,6 @@ void			sh_loop(t_shell *shell, char **envv)
 		}
 		ft_strfree(line);
 		ft_strfree(buf);
-
 	}
 }
 
