@@ -30,6 +30,14 @@ static int		ft_count_words(char const *s, char c)
 	return (amt);
 }
 
+/*
+** takes in an empty 2d array, the amount of words, the character
+** to by which the string is supposed to be delimited,
+** and the string itself
+** uses this information to fill up the twod array with the
+** split up string
+*/
+
 static char		**ft_line_creator(const char *s, char **arr, char c, int amts)
 {
 	int		i;
@@ -41,9 +49,8 @@ static char		**ft_line_creator(const char *s, char **arr, char c, int amts)
 	k = 0;
 	while (s[i])
 	{
-		if (s[i] != c && amts > 0)
+		if (s[i] != c && amts-- > 0)
 		{
-			amts--;
 			debut = i;
 			longeur = 0;
 			while (s[i] != '\0' && s[i] != c)

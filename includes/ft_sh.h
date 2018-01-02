@@ -47,6 +47,7 @@ typedef struct		s_shell
 	char			*bin_dir;
 }					t_shell;
 
+char				*builtin_cmd_from_path(t_shell *shell);
 T_BOOL				check_builtin_path(t_shell *shell);
 int					exec_builtin(t_shell *shell);
 T_BOOL				check_builtins(char *cmd);
