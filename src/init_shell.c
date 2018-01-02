@@ -27,8 +27,8 @@ t_shell				*init_shell(int ac, char **av, char **envv)
 		fatal("Couldn't allocate shell in init_shell");
 	shell->env = init_env(envv);
 	shell->argc = 0;
-	shell->args = NULL;
 	shell->path_var = NULL;
 	shell->bin_dir = NULL;
+	shell->cmds = NULL;
 	return (shell);
 }

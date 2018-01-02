@@ -66,16 +66,22 @@ void			sh_loop(t_shell *shell, char **envv)
 	line = NULL;
 	while (status == 1)
 	{
-		shell->args = NULL;
 		ft_putstr("tamshell$> ");
 		get_next_line(0, &buf);
 		line = replace_tabs(buf);
-		shell->args = ft_strsplit(line, ' ');
-		shell->argc = count_args(shell->args);
-		status = sh_execute(envv, shell);
+
+		shell->cmds = store_commands(line);
+
+		while (shell->cmds)
+		{
+			shell->argc = count_args(shell->cmds->args);
+			status = sh_execute(envv, shell);
+			free_twod_arr(shell->cmds->args);
+			shell->cmds = shell->cmds->next;
+		}
 		ft_strfree(line);
 		ft_strfree(buf);
-		free_twod_arr(shell->args);
+
 	}
 }
 
