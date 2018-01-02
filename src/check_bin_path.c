@@ -14,7 +14,7 @@
 
 /*
 ** Receives a (potential) file path and a directory path
-** and checks to see if it makes with
+** and checks to see if it matches with
 ** any of the file paths within the directory
 ** of the given directory path
 ** returns TRUE upon match
@@ -29,6 +29,10 @@ T_BOOL			check_dir_paths(char *dir_path, char *file_path)
 	dir = NULL;
 	ent = NULL;
 	cmpd_path = NULL;
+
+
+
+
 	if (!dir_path || !file_path)
 		fatal("Error in (check_dir_paths)");
 	dir = safe_opendir(dir_path);
