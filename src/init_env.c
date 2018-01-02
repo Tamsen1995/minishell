@@ -43,6 +43,7 @@ void			ft_putenv(t_env **begin_list, char *name, char *value)
 	if (!*begin_list)
 	{
 		*begin_list = ft_new_env(name, value);
+		ft_strfree(value);
 		return ;
 	}
 	else
@@ -52,6 +53,7 @@ void			ft_putenv(t_env **begin_list, char *name, char *value)
 			tmp = tmp->next;
 		tmp->next = ft_new_env(name, value);
 		tmp->next->prev = tmp;
+		ft_strfree(value);
 	}
 }
 
