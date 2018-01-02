@@ -49,7 +49,7 @@ typedef struct		s_cmds
 {
 	struct s_cmds	*next;
 	struct s_cmds	*prev;
-	char 			**args;
+	char			**args;
 }					t_cmds;
 
 typedef struct		s_shell
@@ -62,7 +62,7 @@ typedef struct		s_shell
 	char			*bin_dir;
 }					t_shell;
 
-t_cmds 			    *store_commands(char *commands);
+t_cmds				*store_commands(char *commands);
 char				*builtin_cmd_from_path(t_shell *shell);
 T_BOOL				check_builtin_path(t_shell *shell);
 int					exec_builtin(t_shell *shell);
