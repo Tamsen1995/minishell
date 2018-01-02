@@ -103,7 +103,6 @@ typedef struct		s_stack
 	struct s_stack		*prev;
 }					t_stack;
 
-
 int					ft_count_chars(char *string, char c);
 char				*ft_remove_char(char *string, char c);
 char				*make_file_path(char *dir_path, char *filename);

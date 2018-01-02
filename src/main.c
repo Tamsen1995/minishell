@@ -111,7 +111,6 @@ int				main(int ac, char **av, char **envv)
 	shell = init_shell(ac, av, envv);
 	sh_loop(shell, envv);
 	free_shell(shell);
-//	while(1);
 	return (0);
 }
 

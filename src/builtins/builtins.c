@@ -50,9 +50,6 @@ T_BOOL				iter_builtin_bin_paths(char *bin_dir, t_shell *shell)
 	dir = NULL;
 	ent = NULL;
 	file_path = NULL;
-
-//	ft_putendl(bin_dir); // TESTING
-
 	dir = safe_opendir(bin_dir);
 	while ((ent = readdir(dir)))
 	{
@@ -87,8 +84,6 @@ T_BOOL				check_builtin_path(t_shell *shell)
 	get_path_var(shell);
 	if (!shell->path_var)
 		return (FALSE);
-
-
 	bin_dirs = ft_strsplit(shell->path_var, ':');
 	while (bin_dirs[i])
 	{

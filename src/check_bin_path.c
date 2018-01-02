@@ -29,10 +29,6 @@ T_BOOL			check_dir_paths(char *dir_path, char *file_path)
 	dir = NULL;
 	ent = NULL;
 	cmpd_path = NULL;
-
-
-
-
 	if (!dir_path || !file_path)
 		fatal("Error in (check_dir_paths)");
 	dir = safe_opendir(dir_path);
