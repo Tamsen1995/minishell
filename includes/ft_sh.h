@@ -38,13 +38,12 @@ typedef struct		s_env
 	char			*value;
 }					t_env;
 
-
 /*
 ** a  linked list of commands here
 ** each command is a 2d array
 ** storing the command itself as well as its
 ** parameters
-*/ 
+*/
 
 typedef struct		s_cmds
 {
@@ -52,7 +51,6 @@ typedef struct		s_cmds
 	struct s_cmds	*prev;
 	char 			**args;
 }					t_cmds;
-
 
 typedef struct		s_shell
 {
