@@ -14,7 +14,7 @@
 
 /*
 ** Receives a (potential) file path and a directory path
-** and checks to see if it makes with
+** and checks to see if it matches with
 ** any of the file paths within the directory
 ** of the given directory path
 ** returns TRUE upon match

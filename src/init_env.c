@@ -39,6 +39,7 @@ void			ft_putenv(t_env **begin_list, char *name, char *value)
 	t_env		*tmp;
 
 	tmp = NULL;
+	value = ft_remove_char(value, '"');
 	if (!*begin_list)
 	{
 		*begin_list = ft_new_env(name, value);

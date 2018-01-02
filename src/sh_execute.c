@@ -20,7 +20,6 @@ int				sh_execute(char **envv, t_shell *shell)
 {
 	if (!shell->args || !shell->args[0])
 		return (1);
-	
 	if (check_builtins(shell->args[0]) == TRUE || \
 			check_builtin_path(shell) == TRUE)
 		return (exec_builtin(shell));

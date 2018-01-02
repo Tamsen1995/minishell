@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safe_opendir.c                                  :+:      :+:    :+:   */
+/*   ft_count_chars.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/08 17:30:12 by tbui              #+#    #+#             */
-/*   Updated: 2017/12/08 17:31:30 by tbui             ###   ########.fr       */
+/*   Created: 2018/01/02 16:00:20 by tbui              #+#    #+#             */
+/*   Updated: 2018/01/02 16:00:23 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
 /*
-** a wrapper around opendir to make it safer
-** in case the function fails it safely exits the programs
+** counts all the indicated charcaters in the given string
 */
 
-DIR			*safe_opendir(char *dir_path)
+int				ft_count_chars(char *string, char c)
 {
-	DIR		*dir;
+	int i;
+	int amt;
 
-	dir = NULL;
-	if (!(dir = opendir(dir_path)))
-		fatal("Could not open directory in (safe_opendir)");
-	return (dir);
+	i = 0;
+	amt = 0;
+	while (string[i])
+	{
+		if (string[i] == c)
+			amt++;
+		i++;
+	}
+	return (amt);
 }

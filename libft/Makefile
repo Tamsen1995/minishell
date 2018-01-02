@@ -52,6 +52,8 @@ SRC = ft_atoi.c \
 	ft_strrchr.c \
 	ft_strsplit.c \
 	ft_strstr.c \
+	ft_count_chars.c \
+	ft_remove_char.c \
 	ft_strsub.c \
 	ft_strtrim.c \
 	ft_tolower.c \

@@ -84,9 +84,6 @@ T_BOOL				check_builtin_path(t_shell *shell)
 	get_path_var(shell);
 	if (!shell->path_var)
 		return (FALSE);
-
-	// TODO Function which will get rid of the ""s in every string
-
 	bin_dirs = ft_strsplit(shell->path_var, ':');
 	while (bin_dirs[i])
 	{
