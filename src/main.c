@@ -44,6 +44,7 @@ char			*replace_tabs(char *buf)
 			line[i] = ' ';
 		i++;
 	}
+	ft_strfree(buf);
 	return (line);
 }
 
@@ -58,26 +59,23 @@ char			*replace_tabs(char *buf)
 void			sh_loop(t_shell *shell, char **envv)
 {
 	int			status;
-	char		*line;
+	t_cmds		*begin_cmds;
 	char		*buf;
 
 	status = 1;
 	buf = NULL;
-	line = NULL;
 	while (status == 1)
 	{
 		ft_putstr("tamshell$> ");
 		get_next_line(0, &buf);
-		line = replace_tabs(buf);
-		shell->cmds = store_commands(line);
+		buf = replace_tabs(buf);
+		shell->cmds = store_commands(buf);
 		while (shell->cmds)
 		{
 			shell->argc = count_args(shell->cmds->args);
 			status = sh_execute(envv, shell);
-			free_twod_arr(shell->cmds->args);
 			shell->cmds = shell->cmds->next;
 		}
-		ft_strfree(line);
 		ft_strfree(buf);
 	}
 }
