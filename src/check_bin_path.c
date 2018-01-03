@@ -52,6 +52,7 @@ T_BOOL			check_dir_paths(char *dir_path, char *file_path)
 /*
 ** Checks to see if the command given
 ** is the path of a binary command
+** (in the presence of the path variable)
 */
 
 T_BOOL			check_bin_path(t_shell *shell)

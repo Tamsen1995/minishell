@@ -85,6 +85,8 @@ int				sh_launch(char **envv, t_shell *shell)
 		command = make_bin_cmd(shell);
 	else if (check_bin_path(shell) == TRUE)
 		command = ft_strdup(shell->cmds->args[0]);
+	else
+		command = ft_strdup(shell->cmds->args[0]);
 	if (pid == 0)
 		safe_exec(command, shell, envv);
 	else if (pid < 0)
