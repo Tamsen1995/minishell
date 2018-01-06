@@ -62,7 +62,6 @@ typedef struct		s_shell
 	char			*bin_dir;
 }					t_shell;
 
-
 void				free_cmds(t_cmds *cmds);
 t_cmds				*store_commands(char *commands);
 char				*builtin_cmd_from_path(t_shell *shell);
