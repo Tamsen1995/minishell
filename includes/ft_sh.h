@@ -38,21 +38,19 @@ typedef struct		s_env
 	char			*value;
 }					t_env;
 
-
 /*
 ** a  linked list of commands here
 ** each command is a 2d array
 ** storing the command itself as well as its
 ** parameters
-*/ 
+*/
 
 typedef struct		s_cmds
 {
 	struct s_cmds	*next;
 	struct s_cmds	*prev;
-	char 			**args;
+	char			**args;
 }					t_cmds;
-
 
 typedef struct		s_shell
 {
@@ -64,7 +62,8 @@ typedef struct		s_shell
 	char			*bin_dir;
 }					t_shell;
 
-t_cmds 			    *store_commands(char *commands);
+void				free_cmds(t_cmds *cmds);
+t_cmds				*store_commands(char *commands);
 char				*builtin_cmd_from_path(t_shell *shell);
 T_BOOL				check_builtin_path(t_shell *shell);
 int					exec_builtin(t_shell *shell);

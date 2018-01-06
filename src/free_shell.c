@@ -66,6 +66,26 @@ void		free_args(t_shell *shell)
 	}
 }
 
+void		free_cmds(t_cmds *cmds)
+{
+	t_cmds *tmp;
+
+	tmp = NULL;
+	if (!cmds)
+		fatal("Error (free_cmds)");
+	tmp = cmds;
+	while (tmp->next)
+		tmp = tmp->next;
+	while (tmp->prev)
+	{
+		tmp = tmp->prev;
+		free_twod_arr(tmp->next->args);
+		free(tmp->next);
+	}
+	free_twod_arr(tmp->args);
+	free(tmp);
+}
+
 /*
 ** Takes in the shell and frees it
 ** implement more
