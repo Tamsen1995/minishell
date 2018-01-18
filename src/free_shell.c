@@ -99,6 +99,8 @@ void		free_shell(t_shell *shell)
 		free_env(shell->env);
 	if (shell->bin_dir != NULL)
 		ft_strfree(shell->bin_dir);
+	if (shell->home_path)
+		ft_strfree(shell->home_path);
 	free(shell);
 	shell = NULL;
 }
