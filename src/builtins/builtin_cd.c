@@ -13,29 +13,6 @@
 #include "../../includes/ft_sh.h"
 
 /*
-** gets the shell and the name of an environment variable
-** iterates through the env until it find said env variable
-** env_var being the sought after variable
-*/
-
-char		*get_env_var(t_shell *shell, char *name)
-{
-	t_env	*tmp;
-	char	*env_var;
-
-	tmp = NULL;
-	tmp = shell->env;
-	env_var = NULL;
-	while (ft_strcmp(tmp->name, name) != 0 && tmp)
-		tmp = tmp->next;
-	if (ft_strcmp(tmp->name, name) == 0)
-		env_var = ft_strdup(tmp->value);
-	if (!env_var)
-		ft_putendl(name);
-	return (env_var);
-}
-
-/*
 ** changes the oldpwd
 */
 
@@ -83,13 +60,9 @@ void		precede_nd_show(t_shell *shell)
 
 int			sh_cd(char **args, t_shell *shell)
 {
-	char	*home_path;
-
-	home_path = NULL;
-	home_path = get_env_var(shell, "HOME");
 	if (args[1] == NULL)
 	{
-		if (chdir(home_path) != 0)
+		if (chdir(shell->home_path) != 0)
 			fatal("Error in (sh_cd)");
 	}
 	else if (ft_strcmp(args[1], "-") == 0)
@@ -103,7 +76,5 @@ int			sh_cd(char **args, t_shell *shell)
 			return (1);
 		}
 	}
-	free(home_path);
-	home_path = NULL;
 	return (1);
 }
