@@ -112,6 +112,8 @@ int				main(int ac, char **av, char **envv)
 	t_shell		*shell;
 
 	shell = NULL;
+	if (!(*envv) || !envv)
+		fatal("No envirionment available");
 	shell = init_shell(ac, av, envv);
 	sh_loop(shell, envv);
 	free_shell(shell);
