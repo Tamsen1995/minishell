@@ -64,6 +64,8 @@ void			sh_loop(t_shell *shell, char **envv)
 
 	status = 1;
 	buf = NULL;
+	if (!(*envv) || !envv || !shell)
+		fatal("Error in : (sh_loop)");
 	while (status == 1)
 	{
 		ft_putstr("tamshell$> ");
