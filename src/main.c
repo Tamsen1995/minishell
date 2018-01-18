@@ -64,6 +64,8 @@ void			sh_loop(t_shell *shell, char **envv)
 
 	status = 1;
 	buf = NULL;
+	if (!(*envv) || !envv || !shell)
+		fatal("Error in : (sh_loop)");
 	while (status == 1)
 	{
 		ft_putstr("tamshell$> ");
@@ -112,6 +114,8 @@ int				main(int ac, char **av, char **envv)
 	t_shell		*shell;
 
 	shell = NULL;
+	if (!(*envv) || !envv)
+		fatal("No envirionment available");
 	shell = init_shell(ac, av, envv);
 	sh_loop(shell, envv);
 	free_shell(shell);

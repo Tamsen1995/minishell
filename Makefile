@@ -21,6 +21,7 @@ SRC = src/main.c \
 	src/builtins/exec_builtin.c \
 	src/helpers/check_directory.c \
 	src/helpers/store_commands.c \
+	src/helpers/ft_get_env_var.c \
 	src/check_bin_path.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))

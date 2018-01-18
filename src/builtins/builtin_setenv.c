@@ -58,7 +58,7 @@ int				sh_setenv(char **args, t_shell *shell)
 		fatal("Error: no args present in (sh_setenv)");
 	tmp_env = shell->env;
 	if (shell->argc == 1)
-		sh_env(shell);
+		return (sh_env(shell));
 	else if (shell->argc > 3)
 	{
 		ft_putendl("minishell: Too many arguments");

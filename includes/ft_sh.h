@@ -59,9 +59,11 @@ typedef struct		s_shell
 	struct s_env	*env;
 	struct s_cmds	*cmds;
 	char			*path_var;
+	char 			*home_path;
 	char			*bin_dir;
 }					t_shell;
 
+char				*get_env_var(t_shell *shell, char *name);
 void				free_cmds(t_cmds *cmds);
 t_cmds				*store_commands(char *commands);
 char				*builtin_cmd_from_path(t_shell *shell);
