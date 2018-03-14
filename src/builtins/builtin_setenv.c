@@ -18,28 +18,22 @@
 ** iterates to that variable and changes it
 */
 
-void			change_env_var(char **args, t_shell *shell)
+void			change_env_var(char *name, char *value, t_shell *shell)
 {
 	t_env		*env_tmp;
-	char		*name;
-	char		*nw_value;
 
-	name = NULL;
-	nw_value = NULL;
 	env_tmp = NULL;
 	env_tmp = shell->env;
-	if (!args[1])
+	if (!name)
 		fatal("No name in (change_env_var)");
-	if (!args[2])
+	if (!value)
 		fatal("Value missing in (change_env_var)");
-	name = ft_strdup(args[1]);
-	nw_value = ft_strdup(args[2]);
 	while (env_tmp && ft_strcmp(env_tmp->name, name) != 0)
 		env_tmp = env_tmp->next;
+	if (!env_tmp)
+		return ;
 	ft_strfree(env_tmp->value);
-	env_tmp->value = ft_strdup(nw_value);
-	ft_strfree(name);
-	ft_strfree(nw_value);
+	env_tmp->value = ft_strdup(value);
 }
 
 /*
@@ -67,7 +61,7 @@ int				sh_setenv(char **args, t_shell *shell)
 	while (tmp_env->next && ft_strcmp(tmp_env->name, args[1]) != 0)
 		tmp_env = tmp_env->next;
 	if (ft_strcmp(tmp_env->name, args[1]) == 0)
-		change_env_var(args, shell);
+		change_env_var(args[1], args[2], shell);
 	else
 		ft_putenv(&shell->env, args[1], args[2]);
 	return (1);

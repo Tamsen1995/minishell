@@ -30,6 +30,12 @@
 # define TRUE 1
 # define FALSE 0
 
+enum				e_pwd
+{
+	OLD,
+	CUR
+};
+
 typedef struct		s_env
 {
 	struct s_env	*next;
@@ -70,7 +76,7 @@ char				*builtin_cmd_from_path(t_shell *shell);
 T_BOOL				check_builtin_path(t_shell *shell);
 int					exec_builtin(t_shell *shell);
 T_BOOL				check_builtins(char *cmd);
-void				change_env_var(char **args, t_shell *shell);
+void				change_env_var(char *name, char *value, t_shell *shell);
 T_BOOL				check_bin_path(t_shell *shell);
 T_BOOL				check_directory(char *dir_path, char *file);
 void				get_path_var(t_shell *shell);
