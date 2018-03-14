@@ -6,7 +6,7 @@
 /*   By: tbui <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/29 15:01:05 by tbui              #+#    #+#             */
-/*   Updated: 2017/09/29 15:06:37 by tbui             ###   ########.fr       */
+/*   Updated: 2018/03/14 18:27:17 by tbui             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void		put_pwd(t_shell *shell, char *pwd)
 {
 	char		current_dir[BUF_SIZE];
 	t_env		*tmp_env;
-
 
 	tmp_env = NULL;
 	ft_bzero(current_dir, BUF_SIZE);
@@ -47,11 +46,10 @@ void		update_pwd(enum e_pwd pwd, t_shell *shell)
 	if (!shell || !shell->env)
 		fatal("Error 1 in : (update_oldpwd)");
 	if (pwd == OLD)
-		put_pwd(shell, "OLDPWD"); // TODO : setenv the oldpwd
+		put_pwd(shell, "OLDPWD");
 	if (pwd == CUR)
 		put_pwd(shell, "PWD");
 }
-
 
 /*
 ** a safe wrapper around chdir

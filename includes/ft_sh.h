@@ -65,7 +65,7 @@ typedef struct		s_shell
 	struct s_env	*env;
 	struct s_cmds	*cmds;
 	char			*path_var;
-	char 			*home_path;
+	char			*home_path;
 	char			*bin_dir;
 }					t_shell;
 
