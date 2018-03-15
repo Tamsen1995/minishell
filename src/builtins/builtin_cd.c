@@ -38,7 +38,7 @@ void		put_pwd(t_shell *shell, char *pwd)
 /*
 ** simply a function to update the oldpwd OR the PWD
 ** within the environment variable list
-** sets the oldpwd / owd to the current working directory
+** sets the oldpwd / pwd to the current working directory
 */
 
 void		update_pwd(enum e_pwd pwd, t_shell *shell)
@@ -46,7 +46,9 @@ void		update_pwd(enum e_pwd pwd, t_shell *shell)
 	if (!shell || !shell->env)
 		fatal("Error 1 in : (update_oldpwd)");
 	if (pwd == OLD)
+	{
 		put_pwd(shell, "OLDPWD");
+	}
 	if (pwd == CUR)
 		put_pwd(shell, "PWD");
 }
@@ -83,7 +85,7 @@ int			sh_cd(char **args, t_shell *shell)
 		oldpwd = get_env_var(shell, "OLDPWD");
 		safe_chdir(shell, oldpwd);
 	}
-	if (args[1] == NULL)
+	else if (args[1] == NULL)
 		safe_chdir(shell, shell->home_path);
 	else
 		safe_chdir(shell, args[1]);
